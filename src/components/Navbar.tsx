@@ -39,6 +39,25 @@ function DrawerAppBar(props: {
     };
   }, []);
 
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener("beforeinstallprompt", handler);
+    window.addEventListener("appinstalled", () => setDeferredPrompt(null));
+    return () => window.removeEventListener("beforeinstallprompt", handler);
+  }, []);
+
+  const handleInstall = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === "accepted") setDeferredPrompt(null);
+  };
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -110,6 +129,21 @@ function DrawerAppBar(props: {
                 </Button>
               ))}
             </Box>
+            {deferredPrompt && (
+              <Button 
+                onClick={handleInstall} 
+                variant="outlined" 
+                size="small"
+                sx={{ 
+                  color: "#fff", 
+                  borderColor: "rgba(255,255,255,0.5)",
+                  marginLeft: 1,
+                  "&:hover": { borderColor: "#fff", background: "rgba(255,255,255,0.1)" }
+                }}
+              >
+                Install App
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
         <Box component="nav">

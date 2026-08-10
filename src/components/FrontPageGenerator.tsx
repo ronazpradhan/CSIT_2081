@@ -197,6 +197,8 @@ export default function FrontPageGenerator({ sem }: { sem: Sem }) {
           <CardActions
             sx={{
               flexWrap: "wrap",
+              justifyContent: "center",
+              paddingBottom: 2,
             }}
           >
             <Button 
@@ -211,15 +213,9 @@ export default function FrontPageGenerator({ sem }: { sem: Sem }) {
                 padding: "8px 24px",
                 textTransform: "none",
                 fontSize: "1rem",
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  background: "linear-gradient(45deg, #06b6d4 30%, #0f766e 90%)",
-                  transform: "translateY(-2px)",
-                  boxShadow: "0 5px 12px 3px rgba(6, 182, 212, .4)",
-                },
               }}
             >
-              ✨ Generate Front Page
+              Generate Front Page
             </Button>
             {error ? (
               <Typography
