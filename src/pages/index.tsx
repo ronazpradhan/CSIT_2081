@@ -11,6 +11,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ClassRoutine from "../components/ClassRoutine";
 import ExamRoutine from "../components/ExamRoutine";
+import InstallPrompt from "../components/InstallPrompt";
 import Router, { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { currentSem, examTypes } from "../constants";
@@ -122,6 +123,7 @@ function Index() {
           </Box>
         </Container>
         <Footer />
+        <InstallPrompt />
       </Box>
     </>
   );
