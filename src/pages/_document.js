@@ -27,7 +27,7 @@ export default class MyDocument extends Document {
           <meta
             key="og:url"
             property="og:url"
-            content="https://www.csit21.cf/"
+            content="https://csit2081.vercel.app/"
           />
 
           {/* PWA primary color */}
