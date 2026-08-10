@@ -98,14 +98,13 @@ export default function Downlaods() {
             >
               {downloads.map(
                 (
-                  { name, link, onClick, bgColor, bgImage },
+                  { name, link, bgColor, bgImage },
                   index
                 ) => (
                   <GradientButton
                     key={index}
                     name={name}
                     link={link}
-                    onClick={onClick}
                     bgColor={bgColor}
                     bgImage={bgImage}
                   />

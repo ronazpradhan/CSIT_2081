@@ -55,7 +55,7 @@ export default function FrontPageGenerator({ sem }: { sem: Sem }) {
           if (Array.isArray(cls[0])) {
             for (const nestedCls of cls) {
               if (
-                nestedCls[0]?.shortName === subject &&
+                (nestedCls[0] as any)?.shortName === subject &&
                 nestedCls[1] &&
                 !String(nestedCls[1]).includes("Lab") &&
                 !String(nestedCls[1]).match(/^\d+$/)
@@ -66,7 +66,7 @@ export default function FrontPageGenerator({ sem }: { sem: Sem }) {
             }
           } else {
             if (
-              cls[0]?.shortName === subject &&
+              (cls[0] as any)?.shortName === subject &&
               cls[1] &&
               !String(cls[1]).includes("Lab") &&
               !String(cls[1]).match(/^\d+$/)
