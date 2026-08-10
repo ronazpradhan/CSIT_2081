@@ -8,7 +8,7 @@ The main idea behind this project is to make academic resource tracking fast, cl
 
 This platform is PWA-enabled (Progressive Web App) and privacy-focused, ensuring students can access saved routines and materials even when offline.
 
-**Live preview:** [https://github.com/ronazpradhan/CSIT_2081](https://github.com/ronazpradhan/CSIT_2081) *(Update with your live Vercel/Netlify link once deployed)*
+**Live preview:** [https://csit2081.vercel.app/](https://csit2081.vercel.app/)
 
 ## 🛠️ Technologies
 - React
@@ -35,6 +35,9 @@ Most class groups get messy with links scattered across Messenger, Discord, or W
 The app was planned as a web platform where users can quickly check their routines and get their assignment covers ready. It uses Next.js and Material UI to keep the experience smooth and app-like.
 
 After adapting the base from a previous batch's open-source project, I worked on cleaning up the codebase, removing unused legacy components, updating the titles, and tailoring the resources strictly for the 2081 batch.
+
+## 🙏 Acknowledgements
+A huge shoutout and special thanks to [Joon Shakya (joonshakya)](https://github.com/joonshakya/) for the original inspiration and base structure of this project. The initial framework for this platform was adapted from their amazing work for the previous CSIT batch!
 
 ## 📚 What I Learned
 While building and adapting this project, I learned more about:
