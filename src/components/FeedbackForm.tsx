@@ -19,8 +19,18 @@ export default function FeedbackForm() {
   };
 
   return (
-    <Card sx={{ my: 4, borderRadius: 4, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}>
-      <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
+    <Card 
+      sx={{ 
+        mt: 2, 
+        borderRadius: ".6rem",
+        "&:hover": {
+          boxShadow:
+            "0 20px 20px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+        },
+      }}
+      elevation={3}
+    >
+      <CardContent>
         <Typography 
           variant="h5" 
           component="h2" 

@@ -119,10 +119,10 @@ function Index() {
                 size={{ xs: 12, sm: 10, md: 5 }}
               >
                 <FrontPageGenerator sem={sem || currentSem} />
+                <FeedbackForm />
               </Grid>
             </Grid>
           </Box>
-          <FeedbackForm />
         </Container>
         <Footer />
       </Box>
