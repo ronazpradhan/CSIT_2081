@@ -30,19 +30,19 @@ export default function FeedbackForm() {
       }}
       elevation={3}
     >
-      <CardContent>
+      <CardContent sx={{ p: 3 }}>
         <Typography 
-          variant="h5" 
+          variant="h6" 
           component="h2" 
           gutterBottom 
           sx={{ fontWeight: "bold", color: "#0f766e", display: "flex", alignItems: "center", gap: 1 }}
         >
           <SendIcon color="primary" /> Feedback & Suggestions
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
           Found a bug? Have a suggestion for the platform? Or just want to say hi? Fill out the form below to shoot me an email directly!
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+        <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <TextField
             label="Your Name"
             variant="outlined"
@@ -55,7 +55,7 @@ export default function FeedbackForm() {
             label="Your Message"
             variant="outlined"
             multiline
-            rows={4}
+            rows={2}
             fullWidth
             required
             value={message}
