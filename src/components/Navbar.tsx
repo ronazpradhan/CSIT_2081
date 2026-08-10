@@ -39,15 +39,27 @@ function DrawerAppBar(props: {
     };
   }, []);
 
+  const [isInstallable, setIsInstallable] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsInstallable(!window.matchMedia("(display-mode: standalone)").matches);
+    }
+  }, []);
+
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
 
   useEffect(() => {
     const handler = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e);
+      setIsInstallable(true);
     };
     window.addEventListener("beforeinstallprompt", handler);
-    window.addEventListener("appinstalled", () => setDeferredPrompt(null));
+    window.addEventListener("appinstalled", () => {
+      setDeferredPrompt(null);
+      setIsInstallable(false);
+    });
     return () => window.removeEventListener("beforeinstallprompt", handler);
   }, []);
 
@@ -55,7 +67,10 @@ function DrawerAppBar(props: {
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === "accepted") setDeferredPrompt(null);
+    if (outcome === "accepted") {
+      setDeferredPrompt(null);
+      setIsInstallable(false);
+    }
   };
 
   const handleDrawerToggle = () => {
@@ -129,9 +144,15 @@ function DrawerAppBar(props: {
                 </Button>
               ))}
             </Box>
-            {deferredPrompt && (
+            {isInstallable && (
               <Button 
-                onClick={handleInstall} 
+                onClick={() => {
+                  if (deferredPrompt) {
+                    handleInstall();
+                  } else {
+                    alert("To install this app, tap 'Share' > 'Add to Home Screen' on iOS, or click the install icon in your address bar/browser menu on desktop/Android.");
+                  }
+                }}
                 variant="outlined" 
                 size="small"
                 sx={{ 
