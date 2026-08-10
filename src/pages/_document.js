@@ -13,26 +13,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en" className={nunito.className}>
         <Head>
-          <meta
-            key="og:image"
-            property="og:image"
-            content="https://www.csit21.cf/thumbnail.png"
-          />
-          <meta
-            key="og:image:secure_url"
-            property="og:image:secure_url"
-            content="https://www.csit21.cf/thumbnail.png"
-          />
-          <meta
-            key="og:image:width"
-            property="og:image:width"
-            content="1307"
-          />
-          <meta
-            key="og:image:height"
-            property="og:image:height"
-            content="878"
-          />
+
           <meta
             key="og:title"
             property="og:title"
