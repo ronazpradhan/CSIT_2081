@@ -13,7 +13,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 const drawerWidth = 240;
 // const navItems = ["Home", "About", "Contact"];
 const navItems = [];
@@ -72,6 +76,8 @@ function DrawerAppBar(props: {
       setIsInstallable(false);
     }
   };
+
+  const [installDialogOpen, setInstallDialogOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -150,7 +156,7 @@ function DrawerAppBar(props: {
                   if (deferredPrompt) {
                     handleInstall();
                   } else {
-                    alert("To install this app, tap 'Share' > 'Add to Home Screen' on iOS, or click the install icon in your address bar/browser menu on desktop/Android.");
+                    setInstallDialogOpen(true);
                   }
                 }}
                 variant="outlined" 
@@ -167,6 +173,33 @@ function DrawerAppBar(props: {
             )}
           </Toolbar>
         </AppBar>
+        
+        <Dialog
+          open={installDialogOpen}
+          onClose={() => setInstallDialogOpen(false)}
+          aria-labelledby="install-dialog-title"
+          aria-describedby="install-dialog-description"
+        >
+          <DialogTitle id="install-dialog-title">
+            Install App Manually
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="install-dialog-description">
+              It looks like your browser isn't triggering the automatic install prompt.
+              <br/><br/>
+              <b>On Android (Chrome):</b> Tap the three dots menu (⋮) at the top right and select <b>"Add to Home screen"</b>.
+              <br/><br/>
+              <b>On iPhone (Safari):</b> Tap the Share button (square with an arrow pointing up) at the bottom and select <b>"Add to Home Screen"</b>.
+              <br/><br/>
+              <b>On Desktop:</b> Look for an install icon (a screen with a down arrow) on the far right of your address bar.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setInstallDialogOpen(false)} autoFocus>
+              Got it
+            </Button>
+          </DialogActions>
+        </Dialog>
         <Box component="nav">
           <Drawer
             container={container}
