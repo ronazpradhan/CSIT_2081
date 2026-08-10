@@ -11,6 +11,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ClassRoutine from "../components/ClassRoutine";
 import ExamRoutine from "../components/ExamRoutine";
+import FeedbackForm from "../components/FeedbackForm";
 
 import Router, { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -121,6 +122,7 @@ function Index() {
               </Grid>
             </Grid>
           </Box>
+          <FeedbackForm />
         </Container>
         <Footer />
       </Box>
