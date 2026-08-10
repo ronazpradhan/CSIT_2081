@@ -199,8 +199,27 @@ export default function FrontPageGenerator({ sem }: { sem: Sem }) {
               flexWrap: "wrap",
             }}
           >
-            <Button type="submit" size="small">
-              Generate Front Page
+            <Button 
+              type="submit" 
+              variant="contained"
+              sx={{
+                background: "linear-gradient(45deg, #0f766e 30%, #06b6d4 90%)",
+                color: "white",
+                fontWeight: "bold",
+                boxShadow: "0 3px 5px 2px rgba(6, 182, 212, .3)",
+                borderRadius: "24px",
+                padding: "8px 24px",
+                textTransform: "none",
+                fontSize: "1rem",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  background: "linear-gradient(45deg, #06b6d4 30%, #0f766e 90%)",
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 5px 12px 3px rgba(6, 182, 212, .4)",
+                },
+              }}
+            >
+              ✨ Generate Front Page
             </Button>
             {error ? (
               <Typography
