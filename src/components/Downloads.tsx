@@ -83,7 +83,7 @@ export default function Downlaods() {
               pt: 2,
             }}
           >
-            <EditOnGithubButton link="https://github.com/CSIT21/blob/main/src/constants/downloads.tsx" />
+            <EditOnGithubButton link="https://github.com/ronazpradhan/CSIT_2081/blob/main/src/constants/downloads.tsx" />
             <Typography variant="h5" component="div">
               Downloads
             </Typography>

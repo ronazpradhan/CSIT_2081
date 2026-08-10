@@ -1,12 +1,12 @@
 {
   "name": "2081 BSc. CSIT",
-  "short_name": "CSIT21",
+  "short_name": "CSIT 2081",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "display_override": ["standalone", "fullscreen", "minimal-ui"],
   "background_color": "#6671c6",
-  "description": "CSIT21 is a comprehensive platform built specifically for our class offering study materials, classroom routines, exam schedules, front page generator, and more.",
+  "description": "CSIT 2081 is a comprehensive platform built specifically for our class offering study materials, classroom routines, exam schedules, front page generator, and more.",
   "theme_color": "#6671c6",
   "icons": [
     {

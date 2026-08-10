@@ -30,7 +30,7 @@ export default function MyApp(props) {
         <meta
           key="og:description"
           property="og:description"
-          content="CSIT21 is a comprehensive platform offering study materials, classroom routines, exam schedules, front page generator, and more for CSIT students."
+          content="CSIT 2081 is a comprehensive platform offering study materials, classroom routines, exam schedules, front page generator, and more for CSIT students."
         />
         <meta
           key="og:url"
@@ -52,7 +52,7 @@ export default function MyApp(props) {
         <link rel="manifest" href="/manifest.json" />
         <meta
           name="description"
-          content="CSIT21 is a comprehensive platform built specifically for our class offering study materials, classroom routines, exam schedules, front page generator, and more."
+          content="CSIT 2081 is a comprehensive platform built specifically for our class offering study materials, classroom routines, exam schedules, front page generator, and more."
         />
         <meta property="og:type" content="website" />
         <meta property="fb:app_id" content="1265498347173300" />
@@ -89,7 +89,7 @@ export default function MyApp(props) {
           name="mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        <meta name="mobile-web-app-title" content="CSIT21" />
+        <meta name="mobile-web-app-title" content="CSIT 2081" />
         <meta name="mobile-web-app-capable" content="yes" />
 
         
