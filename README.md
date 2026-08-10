@@ -1,63 +1,82 @@
-# CSIT21
+# 🎓 2081 BSc. CSIT Platform
 
-Welcome to CSIT21, your one-stop destination for study materials, classroom routines, exam schedules, CSIT course-related software downloads, and more!
+The 2081 BSc. CSIT Platform is a fast, offline-capable web application designed to track and provide study materials, classroom routines, exam schedules, and utility tools for the BSc. CSIT 2081 batch.
 
-## About
+**Important Note:** This repository contains the source code for the public-facing platform built specifically for the 2081 batch. 
 
-CSIT21 is a comprehensive website designed to cater to the needs of Computer Science and Information Technology (CSIT) students. Whether you're looking for study resources, software downloads, or assignment helpers, CSIT21 has got you covered.
+The main idea behind this project is to make academic resource tracking fast, clean, and easily accessible without forcing students to jump through multiple Google Drive links or scattered messages.
 
-## Features
+This platform is PWA-enabled (Progressive Web App) and privacy-focused, ensuring students can access saved routines and materials even when offline.
 
-- **Study Materials:** Access a wide range of study materials covering various CSIT topics.
-- **Classroom Routines:** Stay updated with classroom schedules and routines to plan your academic activities effectively.
-- **Exam Routines:** Keep track of upcoming exams and their schedules to prepare in advance.
-- **Assignment Font Page Generator:** Generate font pages for your assignments effortlessly.
-- **Offline Support:** Access the website offline and continue learning even without an internet connection.
-- **Software Downloads:** Find and download CSIT course-related software to support your learning.
-- **Op. Code Finder:** Find the operation code for 8085 microprocessor instructions with ease.
-- **Tally Bar Generator:** Generate tally bars for your assignments and projects in a few clicks.
-- **And More:** Explore additional features and resources to enhance your learning experience.
+**Live preview:** [https://github.com/ronazpradhan/CSIT_2081](https://github.com/ronazpradhan/CSIT_2081) *(Update with your live Vercel/Netlify link once deployed)*
 
-## Live Website
+## 🛠️ Technologies
+- React
+- Next.js
+- TypeScript
+- Material UI (MUI)
+- SCSS
+- PWA (Progressive Web App)
 
-You can access the live version of CSIT21 at [https://www.csit21.cf](https://www.csit21.cf).
+## ✨ Features
+Here’s what you can do with the 2081 BSc. CSIT Platform:
+- View and download semester-wise study materials, notes, and syllabus links
+- Track your daily Class Routine and upcoming Exam Routines
+- Quickly generate customized Assignment Front Pages in `.docx` format
+- Use the app offline once loaded (PWA support)
+- Navigate through a clean, modern, and responsive mobile-first interface
+- Access important files like the Stats II table easily
 
-## Installation
+## ⚙️ The Process
+I started this project with the goal of building a centralized hub for our new 2081 batch so we actually have all our resources in one place.
 
-1. Clone this repository
+Most class groups get messy with links scattered across Messenger, Discord, or WhatsApp. So, I focused on making a platform that is simple, fast, and always reliable.
 
+The app was planned as a web platform where users can quickly check their routines and get their assignment covers ready. It uses Next.js and Material UI to keep the experience smooth and app-like.
+
+After adapting the base from a previous batch's open-source project, I worked on cleaning up the codebase, removing unused legacy components, updating the titles, and tailoring the resources strictly for the 2081 batch.
+
+## 📚 What I Learned
+While building and adapting this project, I learned more about:
+- Building modern web apps with React and Next.js
+- Cleaning up and refactoring legacy codebases
+- Using Material UI (MUI) for responsive and fast component design
+- Generating and handling `.docx` files on the client-side
+- Configuring Progressive Web Apps (PWA) through `manifest.json`
+- Managing Git histories and completely resetting repository branches
+
+## 🌱 Overall Growth
+This project helped me understand how a real platform is maintained, adapted, and improved for a new set of users.
+
+I learned that good apps do not always need too many features. Sometimes the best experience comes from keeping things simple, fast, and exactly what the students need.
+
+This platform also helped me improve my confidence in React development, project cleanup, and GitHub repository management.
+
+## 🚀 How Can It Be Improved?
+In the future, this project can be improved by adding:
+- Dynamic CMS (Content Management System) to update routines without editing code
+- Push notifications for upcoming exams or assignment deadlines
+- Dark mode toggle
+- CGPA/SGPA Calculator
+- Student discussion or notice board
+
+## ▶️ Using the App
+To run the platform locally on your machine:
+
+1. Clone the repository:
    ```bash
-   git clone https://github.com/CSIT21/CSIT21
+   git clone https://github.com/ronazpradhan/CSIT_2081.git
    ```
-
-   <br/>
-
-2. Navigate to CSIT21 folder in your terminal
-
-3. Install project dependencies
-
+2. Navigate to the project directory:
    ```bash
-   bun install
+   cd CSIT_2081
    ```
-
-   <br/>
-
-4. To run the server, run the following command
-
+3. Install the dependencies (using npm, yarn, or bun):
    ```bash
-   bun dev
+   npm install
    ```
-
-<br/>
-
-## Contributing
-
-Contributions to CSIT21 are welcome! If you'd like to contribute, please fork the repository, make your changes, and submit a pull request.
-
-## Issues
-
-If you encounter any issues or have suggestions for improvement, please feel free to open an issue on the GitHub repository.
-
-## Acknowledgements
-
-CSIT21 would like to thank all contributors and supporters who have helped in the development and maintenance of the website.
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the platform.
