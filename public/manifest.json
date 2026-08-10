@@ -1,0 +1,28 @@
+{
+  "name": "2081 BSc. CSIT",
+  "short_name": "CSIT21",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#6671c6",
+  "description": "CSIT21 is a comprehensive platform built specifically for our class offering study materials, classroom routines, exam schedules, front page generator, and more.",
+  "theme_color": "#6671c6",
+  "icons": [
+    {
+      "src": "/static/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/favicon/maskable_icon.png",
+      "sizes": "640x640",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

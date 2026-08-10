@@ -1,0 +1,680 @@
+import { subjects } from "./subjects";
+
+export const classRoutine = {
+  sem8: [
+    {
+      day: "Sun",
+      a: [
+        [subjects.sem8.ADB, "218"],
+        [
+          [subjects.sem8.DN, ""],
+          [subjects.sem8.IBM, ""],
+        ],
+      ],
+      b: [
+        [subjects.sem8.CC, "220"],
+        [
+          [subjects.sem8.DN, ""],
+          [subjects.sem8.IBM, ""],
+        ],
+      ],
+    },
+    {
+      day: "Mon",
+      a: [
+        [subjects.sem8.ADB, "218"],
+        [
+          [subjects.sem8.DN, ""],
+          [subjects.sem8.IBM, ""],
+        ],
+      ],
+      b: [
+        [subjects.sem8.CC, "220"],
+        [
+          [subjects.sem8.DN, ""],
+          [subjects.sem8.IBM, ""],
+        ],
+      ],
+    },
+    {
+      day: "Tue",
+      a: [
+        [subjects.sem8.ADB, "Lab C"],
+        [subjects.sem8.CC, "Lab C"],
+      ],
+      b: [
+        [subjects.sem8.ADB, "Lab C"],
+        [subjects.sem8.CC, "Lab C"],
+      ],
+    },
+    {
+      day: "Wed",
+      a: [
+        [subjects.sem8.ADB, "Lab C"],
+        [subjects.sem8.CC, "Lab C"],
+      ],
+      b: [
+        [subjects.sem8.ADB, "Lab C"],
+        [subjects.sem8.CC, "Lab C"],
+      ],
+    },
+    {
+      day: "Thu",
+      a: [
+        [subjects.sem8.CC, "218"],
+        [
+          [subjects.sem8.DN, ""],
+          [subjects.sem8.IBM, ""],
+        ],
+      ],
+      b: [
+        [subjects.sem8.ADB, "220"],
+        [
+          [subjects.sem8.DN, ""],
+          [subjects.sem8.IBM, ""],
+        ],
+      ],
+    },
+    {
+      day: "Fri",
+      a: [
+        [subjects.sem8.CC, "218"],
+        [subjects.sem8.Intern, ""],
+      ],
+      b: [
+        [subjects.sem8.ADB, "220"],
+        [subjects.sem8.Intern, ""],
+      ],
+    },
+  ],
+  sem7: [
+    {
+      day: "Sun",
+      a: [
+        [subjects.sem7.DWDM, "315"],
+        [subjects.sem7.PoM, "315"],
+      ],
+      b: [
+        [subjects.sem7.PoM, "321"],
+        [subjects.sem7.Java, "PTA Lab"],
+      ],
+    },
+    {
+      day: "Mon",
+      a: [
+        [subjects.sem7.DWDM, "Lab C"],
+        [subjects.sem7.PoM, "315"],
+      ],
+      b: [
+        [subjects.sem7.PoM, "321"],
+        [subjects.sem7.Java, "PTA Lab"],
+      ],
+    },
+    //    {
+    //   day: "Tue",
+    //   a: [
+    //     [subjects.sem7.Java, "PTA Lab"],
+    //     [subjects.sem7.PoM, "315"],
+    //   ],
+    //   b: [
+    //     [subjects.sem7.Java, "PTA Lab"],
+    //     [subjects.sem7.PoM, "321"],
+    //   ],
+    // },
+    {
+      day: "Tue",
+      a: [
+        [subjects.sem7.Java, "PTA Lab"],
+        [subjects.sem7.PoM, "PTA Lab"],
+      ],
+      b: [
+        [subjects.sem7.Java, "PTA Lab"],
+        [subjects.sem7.PoM, "PTA Lab"],
+      ],
+    },
+    {
+      day: "Wed",
+      a: [
+        [
+          [subjects.sem7.SPM, "lab E"],
+          [subjects.sem7.IR, "Lab C"],
+        ],
+        [subjects.sem7.Java, "PTA Lab"],
+      ],
+      b: [
+        [
+          [subjects.sem7.SPM, "lab E"],
+          [subjects.sem7.IR, "Lab C"],
+        ],
+        [subjects.sem7.DWDM, "321"],
+      ],
+    },
+    {
+      day: "Thu",
+      a: [
+        [
+          [subjects.sem7.SPM, "321"],
+          [subjects.sem7.IR, "315"],
+        ],
+        [subjects.sem7.Java, "PTA Lab"],
+      ],
+      b: [
+        [
+          [subjects.sem7.SPM, "321"],
+          [subjects.sem7.IR, "315"],
+        ],
+        [subjects.sem7.DWDM, "321"],
+      ],
+    },
+    {
+      day: "Fri",
+      a: [
+        [
+          [subjects.sem7.SPM, "321"],
+          [subjects.sem7.IR, "315"],
+        ],
+        [subjects.sem7.Java, "PTA Lab"],
+      ],
+      b: [
+        [
+          [subjects.sem7.SPM, "321"],
+          [subjects.sem7.IR, "315"],
+        ],
+        [subjects.sem7.DWDM, "Lab C"],
+      ],
+    },
+  ],
+  sem6: [
+    {
+      day: "Sun",
+      a: [
+        [subjects.sem6.TW, "Online"],
+        [subjects.sem6.ECom, "Online"],
+        [subjects.sem6.EGov, "Online"],
+      ],
+      b: [
+        [subjects.sem6.TW, "Online"],
+        [subjects.sem6.NCC, "Online"],
+        [subjects.sem6.EGov, "Online"],
+      ],
+    },
+    {
+      day: "Mon",
+      a: [
+        [subjects.sem6.ECom, ""],
+        [subjects.sem6.TW, ""],
+        [subjects.sem6.Compiler, ""],
+      ],
+      b: [
+        [subjects.sem6.TW, ""],
+        [subjects.sem6.NCC, ""],
+        [subjects.sem6.EGov, ""],
+      ],
+    },
+    {
+      day: "Tue",
+      a: [
+        [subjects.sem6.ECom, ""],
+        [subjects.sem6.NCC, ""],
+        [subjects.sem6.SE, "Lab"],
+        ["*", ""],
+      ],
+      b: [
+        [subjects.sem6.NCC, ""],
+        [subjects.sem6.Compiler, ""],
+        [subjects.sem6.SE, "Lab"],
+      ],
+    },
+    {
+      day: "Wed",
+      a: [
+        [subjects.sem6.NCC, ""],
+        [subjects.sem6.SE, ""],
+        [subjects.sem6.Compiler, ""],
+      ],
+      b: [
+        [subjects.sem6.ECom, ""],
+        [subjects.sem6.Compiler, ""],
+        [subjects.sem6.SE, ""],
+      ],
+    },
+    {
+      day: "Thu",
+      a: [
+        [subjects.sem6.NCC, ""],
+        [subjects.sem6.EGov, ""],
+        [subjects.sem6.SE, ""],
+      ],
+      b: [
+        [subjects.sem6.ECom, ""],
+        [subjects.sem6.SE, ""],
+        [subjects.sem6.EGov, ""],
+      ],
+    },
+    {
+      day: "Fri",
+      a: [
+        [subjects.sem6.TW, ""],
+        [subjects.sem6.EGov, ""],
+        [subjects.sem6.Compiler, ""],
+      ],
+      b: [
+        [subjects.sem6.ECom, ""],
+        [subjects.sem6.TW, ""],
+        [subjects.sem6.Compiler, ""],
+      ],
+    },
+  ],
+  sem5: [
+    {
+      day: "Sun",
+      a: [
+        [
+          [subjects.sem5.MM, ""],
+          [subjects.sem5.IP, ""],
+        ],
+        [subjects.sem5.DAA, ""],
+        [subjects.sem5.SAD, ""],
+        [subjects.sem5.Simulation, ""],
+      ],
+      b: [
+        [
+          [subjects.sem5.MM, ""],
+          [subjects.sem5.IP, ""],
+        ],
+        [subjects.sem5.Simulation, ""],
+        [subjects.sem5.SAD, ""],
+      ],
+    },
+    {
+      day: "Mon",
+      a: [
+        [
+          [subjects.sem5.MM, ""],
+          [subjects.sem5.IP, ""],
+        ],
+        [subjects.sem5.Simulation, ""],
+        [subjects.sem5.SAD, ""],
+      ],
+      b: [
+        [
+          [subjects.sem5.MM, ""],
+          [subjects.sem5.IP, ""],
+        ],
+        [subjects.sem5.Crypto, ""],
+        [subjects.sem5.SAD, ""],
+        [subjects.sem5.Simulation, ""],
+      ],
+    },
+    {
+      day: "Tue",
+      a: [
+        [
+          [subjects.sem5.MM, ""],
+          [subjects.sem5.IP, ""],
+        ],
+        [subjects.sem5.DAA, ""],
+        [subjects.sem5.SAD, ""],
+      ],
+      b: [
+        [
+          [subjects.sem5.MM, ""],
+          [subjects.sem5.IP, ""],
+        ],
+        [subjects.sem5.Simulation, ""],
+        [subjects.sem5.SAD, ""],
+      ],
+    },
+    {
+      day: "Wed",
+      a: [
+        [subjects.sem5["Web Tech"], ""],
+        [subjects.sem5.Crypto, ""],
+        [subjects.sem5.Simulation, ""],
+      ],
+      b: [
+        [subjects.sem5.Crypto, ""],
+        [subjects.sem5["Web Tech"], ""],
+        [subjects.sem5.DAA, ""],
+      ],
+    },
+    {
+      day: "Thu",
+      a: [
+        [subjects.sem5["Web Tech"], ""],
+        [subjects.sem5.Crypto, ""],
+        [subjects.sem5.DAA, ""],
+      ],
+      b: [
+        [subjects.sem5.DAA, ""],
+        [subjects.sem5["Web Tech"], ""],
+        [subjects.sem5.Crypto, ""],
+      ],
+    },
+    {
+      day: "Fri",
+      a: [
+        [subjects.sem5["Web Tech"], ""],
+        [subjects.sem5.Crypto, ""],
+      ],
+      b: [
+        [subjects.sem5.DAA, ""],
+        [subjects.sem5["Web Tech"], ""],
+      ],
+    },
+  ],
+  sem4: [
+    {
+      day: "Mon",
+      a: [
+        [subjects.sem4.OS, "Suresh Thapa"],
+        [subjects.sem4.DBMS, "Rakesh Shrestha"],
+        [subjects.sem4.CN, "Gyanendra Yadav"],
+      ],
+      b: [
+        [subjects.sem4.OS, "Suresh Thapa"],
+        [subjects.sem4.DBMS, "Rakesh Shrestha"],
+        [subjects.sem4.CN, "Gyanendra Yadav"],
+      ],
+    },
+    {
+      day: "Tue",
+      a: [
+        [subjects.sem4.OS, "Suresh Thapa"],
+        [subjects.sem4.DBMS, "Rakesh Shrestha"],
+        [subjects.sem4.CN, "Gyanendra Yadav"],
+      ],
+      b: [
+        [subjects.sem4.OS, "Suresh Thapa"],
+        [subjects.sem4.DBMS, "Rakesh Shrestha"],
+        [subjects.sem4.CN, "Gyanendra Yadav"],
+      ],
+    },
+    {
+      day: "Wed",
+      a: [
+        [subjects.sem4.OS, "Suresh Thapa"],
+        [subjects.sem4.DBMS, "Rakesh Shrestha"],
+        [subjects.sem4.AI, "Pranaya Nakarmi"],
+      ],
+      b: [
+        [subjects.sem4.OS, "Suresh Thapa"],
+        [subjects.sem4.DBMS, "Rakesh Shrestha"],
+        [subjects.sem4.AI, "Pranaya Nakarmi"],
+      ],
+    },
+    {
+      day: "Thu",
+      a: [
+        [subjects.sem4.TOC, "Sarad Neupane"],
+        [subjects.sem4.AI, "Pranaya Nakarmi"],
+      ],
+      b: [
+        [subjects.sem4.TOC, "Sarad Neupane"],
+        [subjects.sem4.AI, "Pranaya Nakarmi"],
+      ],
+    },
+    {
+      day: "Fri",
+      a: [
+        [subjects.sem4.TOC, "Sarad Neupane"],
+        [subjects.sem4.AI, "Pranaya Nakarmi"],
+      ],
+      b: [
+        [subjects.sem4.TOC, "Sarad Neupane"],
+        [subjects.sem4.AI, "Pranaya Nakarmi"],
+      ],
+    },
+  ],
+  // sem4: [
+  //   {
+  //     day: "Sun",
+  //     a: [
+  //       [subjects.sem4.AI, ""],
+  //       [subjects.sem4.OS, ""],
+  //       [subjects.sem4.CN, "314"],
+  //     ],
+  //     b: [
+  //       [subjects.sem4.AI, ""],
+  //       [subjects.sem4.OS, ""],
+  //       [subjects.sem4.DBMS, "316"],
+  //     ],
+  //   },
+  //   {
+  //     day: "Mon",
+  //     a: [
+  //       [subjects.sem4.DBMS, "314"],
+  //       [subjects.sem4.CN, "314"],
+  //       ["*", ""],
+  //     ],
+  //     b: [
+  //       [subjects.sem4.CN, "316"],
+  //       [subjects.sem4.TOC, "316"],
+  //       [subjects.sem4.DBMS, "316"],
+  //     ],
+  //   },
+  //   {
+  //     day: "Tue",
+  //     a: [
+  //       [subjects.sem4.TOC, "314"],
+  //       [subjects.sem4.AI, ""],
+  //       [subjects.sem4.DBMS, "314"],
+  //     ],
+  //     b: [
+  //       [subjects.sem4.CN, "316"],
+  //       [subjects.sem4.AI, ""],
+  //       ["*", ""],
+  //     ],
+  //   },
+  //   {
+  //     day: "Wed",
+  //     a: [
+  //       [subjects.sem4.TOC, "314"],
+  //       [subjects.sem4.OS, "314"],
+  //       ["*", ""],
+  //     ],
+  //     b: [
+  //       [subjects.sem4.OS, "316"],
+  //       [subjects.sem4.CN, "316"],
+  //       [subjects.sem4.TOC, "316"],
+  //     ],
+  //   },
+  //   {
+  //     day: "Thu",
+  //     a: [
+  //       [subjects.sem4.OS, "314"],
+  //       [subjects.sem4.TOC, "314"],
+  //       [subjects.sem4.DBMS, "314"],
+  //     ],
+  //     b: [
+  //       [subjects.sem4.TOC, "316"],
+  //       [subjects.sem4.DBMS, "316"],
+  //       ["*", ""],
+  //     ],
+  //   },
+  //   {
+  //     day: "Fri",
+  //     a: [
+  //       [subjects.sem4.CN, "314"],
+  //       [subjects.sem4.AI, ""],
+  //       ["*", ""],
+  //     ],
+  //     b: [
+  //       [subjects.sem4.OS, "316"],
+  //       [subjects.sem4.AI, ""],
+  //       ["*", ""],
+  //     ],
+  //   },
+  // ],
+  sem3: [
+    {
+      day: "Sun",
+      a: [
+        [subjects.sem3.NM, ""],
+        [subjects.sem3.CG, ""],
+        [subjects.sem3.DSA, ""],
+        ["*", ""],
+      ],
+      b: [
+        [subjects.sem3.CG, ""],
+        [subjects.sem3.Stats2, ""],
+        ["*", ""],
+      ],
+    },
+    {
+      day: "Mon",
+      a: [
+        [subjects.sem3.CG, ""],
+        [subjects.sem3.Stats2, ""],
+        [subjects.sem3.DSA, ""],
+        ["*", ""],
+      ],
+      b: [
+        [subjects.sem3.DSA, ""],
+        [subjects.sem3.CG, ""],
+        [subjects.sem3.Stats2, ""],
+        ["*", ""],
+      ],
+    },
+    {
+      day: "Tue",
+      a: [
+        [subjects.sem3.CG, ""],
+        [subjects.sem3.NM, ""],
+        [subjects.sem3.Stats2, ""],
+        ["*", ""],
+      ],
+      b: [
+        [subjects.sem3.DSA, ""],
+        [subjects.sem3.Stats2, ""],
+        [subjects.sem3.NM, ""],
+        ["*", ""],
+      ],
+    },
+    {
+      day: "Wed",
+      a: [
+        [subjects.sem3.CA, ""],
+        [subjects.sem3.Stats2, ""],
+        ["*", ""],
+        ["*", ""],
+      ],
+      b: [
+        [subjects.sem3.NM, ""],
+        [subjects.sem3.CA, ""],
+        [subjects.sem3.Stats2, ""],
+        ["*", ""],
+      ],
+    },
+    {
+      day: "Thu",
+      a: [
+        [subjects.sem3.CA, ""],
+        [subjects.sem3.NM, ""],
+        [subjects.sem3.DSA, ""],
+        ["*", ""],
+      ],
+      b: [
+        [subjects.sem3.DSA, ""],
+        [subjects.sem3.CA, ""],
+        [subjects.sem3.CG, ""],
+        ["*", ""],
+      ],
+    },
+    {
+      day: "Fri",
+      a: [
+        [subjects.sem3.CA, ""],
+        [subjects.sem3.Stats2, ""],
+        ["*", ""],
+        ["*", ""],
+      ],
+      b: [
+        [subjects.sem3.NM, ""],
+        [subjects.sem3.CA, ""],
+        ["*", ""],
+        ["*", ""],
+      ],
+    },
+  ],
+  sem2: [
+    {
+      day: "Sun",
+      a: [
+        [subjects.sem2.MP, ""],
+        [subjects.sem2.Maths2, ""],
+        [subjects.sem2.DS, ""],
+      ],
+      b: [
+        [subjects.sem2.DS, ""],
+        [subjects.sem2.OOP, ""],
+        [subjects.sem2.Stats1, ""],
+      ],
+    },
+    {
+      day: "Mon",
+      a: [
+        [subjects.sem2.MP, ""],
+        [subjects.sem2.DS, ""],
+        [subjects.sem2.OOP, ""],
+      ],
+      b: [
+        [subjects.sem2.Maths2, ""],
+        [subjects.sem2.Stats1, ""],
+        [subjects.sem2.DS, ""],
+      ],
+    },
+    {
+      day: "Tue",
+      a: [
+        [subjects.sem2.Maths2, ""],
+        [subjects.sem2.Stats1, ""],
+        [subjects.sem2.OOP, ""],
+      ],
+      b: [
+        [subjects.sem2.OOP, ""],
+        [subjects.sem2.Maths2, ""],
+        [subjects.sem2.DS, ""],
+      ],
+    },
+    {
+      day: "Wed",
+      a: [
+        [subjects.sem2.Maths2, ""],
+        [subjects.sem2.Stats1, ""],
+        [subjects.sem2.MP, ""],
+      ],
+      b: [
+        [subjects.sem2.Maths2, ""],
+        [subjects.sem2.MP, ""],
+        [subjects.sem2.OOP, ""],
+      ],
+    },
+    {
+      day: "Thu",
+      a: [
+        [subjects.sem2.Stats1, ""],
+        [subjects.sem2.DS, ""],
+        [subjects.sem2.Maths2, ""],
+      ],
+      b: [
+        [subjects.sem2.DS, ""],
+        [subjects.sem2.MP, ""],
+        [subjects.sem2.Stats1, ""],
+      ],
+    },
+    {
+      day: "Fri",
+      a: [
+        [subjects.sem2.DS, ""],
+        [subjects.sem2.OOP, ""],
+        ["*", ""],
+      ],
+      b: [
+        [subjects.sem2.MP, ""],
+        [subjects.sem2.Maths2, ""],
+        ["*", ""],
+      ],
+    },
+  ],
+};
