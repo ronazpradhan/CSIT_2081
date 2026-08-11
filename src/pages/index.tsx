@@ -103,7 +103,7 @@ function Index() {
                 sx={{
                   mx: "auto",
                 }}
-                size={{ xs: 12, sm: 10, md: 7 }}
+                size={{ xs: 12, sm: 12, lg: 7 }}
               >
                 <SemesterSelector sem={sem || currentSem} setSem={setSem} />
                 {(sem || currentSem) === "sem4" ? (
@@ -116,7 +116,7 @@ function Index() {
                 sx={{
                   mx: "auto",
                 }}
-                size={{ xs: 12, sm: 10, md: 5 }}
+                size={{ xs: 12, sm: 12, lg: 5 }}
               >
                 <FrontPageGenerator sem={sem || currentSem} />
                 <FeedbackForm />
