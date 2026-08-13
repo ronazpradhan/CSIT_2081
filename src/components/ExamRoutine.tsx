@@ -12,6 +12,7 @@ import TableRow from "@mui/material/TableRow";
 import Skeleton from "@mui/material/Skeleton";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
+import Chip from "@mui/material/Chip";
 import Countdown from "./Countdown";
 import { questionPapers } from "../constants";
 import { examTypes as examTypesObj } from "../constants";
@@ -281,19 +282,25 @@ export default function ExamRoutine({
                           {examType === examTypesObj.board ? (
                             <TableCell sx={tCellStyles} align="center">
                               {index > 0 ? (
-                                `${Math.floor(
-                                  (new Date(exam.date).getTime() -
-                                    new Date(routine[index - 1].date).getTime()) /
-                                    (1000 * 60 * 60 * 24)
-                                ) - 1} ${
-                                  Math.floor(
+                                <Chip
+                                  size="small"
+                                  color="primary"
+                                  variant="outlined"
+                                  sx={{ fontWeight: "bold", borderWidth: "2px" }}
+                                  label={`${Math.floor(
                                     (new Date(exam.date).getTime() -
                                       new Date(routine[index - 1].date).getTime()) /
                                       (1000 * 60 * 60 * 24)
-                                  ) - 1 === 1
-                                    ? "day"
-                                    : "days"
-                                }`
+                                  ) - 1} ${
+                                    Math.floor(
+                                      (new Date(exam.date).getTime() -
+                                        new Date(routine[index - 1].date).getTime()) /
+                                        (1000 * 60 * 60 * 24)
+                                    ) - 1 === 1
+                                      ? "day"
+                                      : "days"
+                                  }`}
+                                />
                               ) : (
                                 "-"
                               )}
