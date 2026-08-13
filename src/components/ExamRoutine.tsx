@@ -103,7 +103,7 @@ export default function ExamRoutine({
           }}
         >
 
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" component="div" sx={{ color: '#0f766e', fontWeight: 800 }}>
             {title ? title : `${examType} Exam Routine`}
           </Typography>
           <Typography
