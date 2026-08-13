@@ -93,38 +93,43 @@ export default function Countdown({
           {text}
         </Typography>
       )}
-      <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
+      <Paper
+        elevation={0}
+        sx={{
+          display: 'flex',
+          gap: { xs: 2, sm: 4 },
+          justifyContent: 'center',
+          backgroundColor: 'rgba(15, 118, 110, 0.08)',
+          borderRadius: 10,
+          py: 1.5,
+          px: { xs: 3, sm: 5 },
+        }}
+      >
         {[
           { label: 'Days', value: timeLeft.days },
           { label: 'Hours', value: timeLeft.hours },
           { label: 'Mins', value: timeLeft.minutes },
           { label: 'Secs', value: timeLeft.seconds },
-        ].map((unit) => (
-          <Box key={unit.label} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Paper
-              elevation={0}
-              sx={{
-                width: { xs: 55, sm: 70 },
-                height: { xs: 60, sm: 75 },
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'rgba(15, 118, 110, 0.08)',
-                color: '#0f766e',
-                borderRadius: 3,
-                mb: 1,
-              }}
-            >
-              <Typography variant="h4" sx={{ fontWeight: 800, fontSize: { xs: '1.5rem', sm: '2rem' } }}>
+        ].map((unit, index) => (
+          <Box key={unit.label} sx={{ display: 'flex', alignItems: 'center', gap: { xs: 2, sm: 4 } }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Typography variant="h4" sx={{ color: '#0f766e', fontWeight: 800, fontSize: { xs: '1.5rem', sm: '2rem' } }}>
                 {unit.value.toString().padStart(2, '0')}
               </Typography>
-            </Paper>
-            <Typography variant="caption" sx={{ color: '#0f766e', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, fontSize: '0.7rem' }}>
-              {unit.label}
-            </Typography>
+              <Typography variant="caption" sx={{ color: '#0f766e', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, fontSize: '0.65rem' }}>
+                {unit.label}
+              </Typography>
+            </Box>
+            {index < 3 && (
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                <Typography variant="h4" sx={{ color: 'rgba(15, 118, 110, 0.4)', fontWeight: 800 }}>
+                  :
+                </Typography>
+              </Box>
+            )}
           </Box>
         ))}
-      </Box>
+      </Paper>
     </Box>
   );
 }
