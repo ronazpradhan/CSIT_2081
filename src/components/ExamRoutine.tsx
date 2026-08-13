@@ -185,8 +185,11 @@ export default function ExamRoutine({
                   <TableHead>
                     <TableRow
                       sx={{
-                        "&:nth-of-type(odd)": {
-                          backgroundColor: "rgba(15, 118, 110, 0.05)",
+                        background: "linear-gradient(90deg, #0f766e 0%, #14b8a6 100%)",
+                        "& .MuiTableCell-root": {
+                          color: "#ffffff",
+                          fontWeight: 700,
+                          border: "none",
                         },
                       }}
                     >
@@ -338,7 +341,12 @@ export default function ExamRoutine({
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                {exam.subject?.shortName}
+                                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                                  <span>{exam.subject?.shortName}</span>
+                                  {exam.subject?.code && (
+                                    <span style={{ fontSize: '0.75rem', color: '#666', fontWeight: 600 }}>{exam.subject?.code}</span>
+                                  )}
+                                </Box>
                               </Link>
                             </TableCell>
                           ) : (
@@ -388,7 +396,12 @@ export default function ExamRoutine({
                                       target="_blank"
                                       rel="noopener noreferrer"
                                     >
-                                      {subject.shortName}
+                                      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                                        <span>{subject?.shortName}</span>
+                                        {subject?.code && (
+                                          <span style={{ fontSize: '0.75rem', color: '#666', fontWeight: 600 }}>{subject?.code}</span>
+                                        )}
+                                      </Box>
                                     </Link>
                                     // <Box
                                     //   key={subject?.shortName}

@@ -256,6 +256,7 @@ export const subjects = {
     TOC: {
       name: "Theory of Computation",
       shortName: "TOC",
+      code: "CSC262",
       microSyllabus:
         "https://drive.google.com/file/d/1WjQKlZjNYopJBgxNQxgToDtU593BmD_Y/view?usp=drive_link",
       notes: "",
@@ -265,6 +266,7 @@ export const subjects = {
     CN: {
       name: "Computer Networking",
       shortName: "CN",
+      code: "CSC263",
       microSyllabus:
         "https://drive.google.com/file/d/111cf1R_1bVxr26TVohRiUjeKc6QIUigk/view?usp=drive_link",
       notes:
@@ -275,6 +277,7 @@ export const subjects = {
     OS: {
       name: "Operating System",
       shortName: "OS",
+      code: "CSC264",
       microSyllabus:
         "https://drive.google.com/file/d/1ltJ9G11kKj-v66r5OFDK8NeSX_l0Et61/view?usp=drive_link",
       notes:
@@ -285,6 +288,7 @@ export const subjects = {
     DBMS: {
       name: "Database Management System",
       shortName: "DBMS",
+      code: "CSC265",
       microSyllabus:
         "https://drive.google.com/file/d/1YZmgUD9OCgEoYcysyweiVzyvKYAjeSac/view?usp=drive_link",
       notes:
@@ -295,6 +299,7 @@ export const subjects = {
     AI: {
       name: "Artificial Intelligence",
       shortName: "AI",
+      code: "CSC266",
       microSyllabus:
         "https://drive.google.com/file/d/1G2ZukFy_gvjwrB-Sh6AU1gA3w_qRpFdE/view?usp=drive_link",
       notes: "",
