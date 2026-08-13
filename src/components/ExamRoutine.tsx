@@ -54,9 +54,11 @@ export default function ExamRoutine({
   }, []);
 
   const tCellStyles = {
-    px: 1,
+    px: { xs: 0.6, sm: 1.5 },
+    py: { xs: 0.5, sm: 1 },
+    fontSize: { xs: "0.8rem", sm: "0.875rem" },
     height: "inherit",
-    border: "1px solid #d7d7d7",
+    border: "1px solid rgba(15, 118, 110, 0.12)",
   };
 
   const routine = examRoutine[sem][examType];
@@ -184,7 +186,7 @@ export default function ExamRoutine({
                     <TableRow
                       sx={{
                         "&:nth-of-type(odd)": {
-                          backgroundColor: "#f5f5f5",
+                          backgroundColor: "rgba(15, 118, 110, 0.05)",
                         },
                       }}
                     >
@@ -228,7 +230,7 @@ export default function ExamRoutine({
                         <TableRow
                           sx={{
                             "&:nth-of-type(even)": {
-                              backgroundColor: "#f5f5f5",
+                              backgroundColor: "rgba(15, 118, 110, 0.02)",
                             },
                             height: "1px",
                           }}
@@ -284,9 +286,13 @@ export default function ExamRoutine({
                               {index > 0 ? (
                                 <Chip
                                   size="small"
-                                  color="primary"
-                                  variant="outlined"
-                                  sx={{ fontWeight: "bold", borderWidth: "2px" }}
+                                  sx={{ 
+                                    backgroundColor: "rgba(15, 118, 110, 0.1)", 
+                                    color: "#0f766e", 
+                                    fontWeight: "bold", 
+                                    border: "none",
+                                    borderRadius: "8px",
+                                  }}
                                   label={`${Math.floor(
                                     (new Date(exam.date).getTime() -
                                       new Date(routine[index - 1].date).getTime()) /
