@@ -55,7 +55,7 @@ export default function ExamRoutine({
 
   const tCellStyles = {
     px: { xs: 0.6, sm: 1.5 },
-    py: { xs: 0.5, sm: 1 },
+    py: { xs: 0.2, sm: 0.4 },
     fontSize: { xs: "0.8rem", sm: "0.875rem" },
     height: "inherit",
     border: "1px solid rgba(15, 118, 110, 0.12)",
@@ -177,8 +177,8 @@ export default function ExamRoutine({
                   mx: "auto",
                   maxWidth:
                     examType !== examTypesObj.prac
-                      ? "560px"
-                      : "360px",
+                      ? "760px"
+                      : "460px",
                 }}
               >
                 <Table size="small">
