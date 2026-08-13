@@ -301,6 +301,13 @@ export const subjects = {
       questions:
         "",
     },
+    UPSKILL: {
+      name: "UPSKILL-Python-Training-Continuation",
+      shortName: "UPSKILL-Python",
+      microSyllabus: "",
+      notes: "",
+      questions: "",
+    },
   },
   sem3: {
     NM: {

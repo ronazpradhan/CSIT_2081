@@ -407,9 +407,11 @@ export const classRoutine = {
       day: "Thu",
       a: [
         [subjects.sem4.TOC, "Sarad Neupane"],
+        [subjects.sem4.TOC, "Sarad Neupane"],
         [subjects.sem4.AI, "Pranaya Nakarmi"],
       ],
       b: [
+        [subjects.sem4.TOC, "Sarad Neupane"],
         [subjects.sem4.TOC, "Sarad Neupane"],
         [subjects.sem4.AI, "Pranaya Nakarmi"],
       ],
@@ -418,9 +420,11 @@ export const classRoutine = {
       day: "Fri",
       a: [
         [subjects.sem4.TOC, "Sarad Neupane"],
+        [subjects.sem4.TOC, "Sarad Neupane"],
         [subjects.sem4.AI, "Pranaya Nakarmi"],
       ],
       b: [
+        [subjects.sem4.TOC, "Sarad Neupane"],
         [subjects.sem4.TOC, "Sarad Neupane"],
         [subjects.sem4.AI, "Pranaya Nakarmi"],
       ],

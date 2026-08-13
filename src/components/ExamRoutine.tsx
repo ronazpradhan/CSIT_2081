@@ -200,6 +200,11 @@ export default function ExamRoutine({
                           Time
                         </TableCell>
                       ) : null}
+                      {examType === examTypesObj.board ? (
+                        <TableCell sx={tCellStyles} align="center">
+                          Gap
+                        </TableCell>
+                      ) : null}
                       <TableCell sx={tCellStyles} align="center">
                         Subject
                       </TableCell>
@@ -211,7 +216,7 @@ export default function ExamRoutine({
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {routine.map((exam) => (
+                    {routine.map((exam, index) => (
                       <Fragment
                         key={
                           exam.subject.shortName ||
@@ -270,6 +275,28 @@ export default function ExamRoutine({
                               align="center"
                             >
                               {exam.time}
+                            </TableCell>
+                          ) : null}
+
+                          {examType === examTypesObj.board ? (
+                            <TableCell sx={tCellStyles} align="center">
+                              {index > 0 ? (
+                                `${Math.floor(
+                                  (new Date(exam.date).getTime() -
+                                    new Date(routine[index - 1].date).getTime()) /
+                                    (1000 * 60 * 60 * 24)
+                                ) - 1} ${
+                                  Math.floor(
+                                    (new Date(exam.date).getTime() -
+                                      new Date(routine[index - 1].date).getTime()) /
+                                      (1000 * 60 * 60 * 24)
+                                  ) - 1 === 1
+                                    ? "day"
+                                    : "days"
+                                }`
+                              ) : (
+                                "-"
+                              )}
                             </TableCell>
                           ) : null}
 

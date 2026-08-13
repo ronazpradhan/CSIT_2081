@@ -107,7 +107,10 @@ function Index() {
               >
                 <SemesterSelector sem={sem || currentSem} setSem={setSem} />
                 {(sem || currentSem) === "sem4" ? (
-                  <ClassRoutine sem={sem || currentSem} />
+                  <>
+                    <ExamRoutine sem="sem4" examType={examTypes.board} />
+                    <ClassRoutine sem={sem || currentSem} />
+                  </>
                 ) : (
                   <SubjectList sem={sem || currentSem} />
                 )}

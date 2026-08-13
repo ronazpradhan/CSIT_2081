@@ -1114,65 +1114,67 @@ export const examRoutine = {
     ],
     [examTypes.board]: [
       {
-        day: "Fri",
+        day: "Wed",
         subject: subjects.sem4.TOC,
-        date: "2024/11/29",
+        date: "2026/09/16",
+        time: "12:00 PM",
         friendlyDate: (
           <>
-            29<sup>th</sup> November
+            16<sup>th</sup> September
             <br />
-            14<sup>th</sup> Mangsir
-          </>
-        ),
-        source:
-          "https://portal.tu.edu.np/notice/4880/B.Sc.CSIT%20&%20BIT%204%20routine.pdf",
-        sourceName: "TU Notice",
-      },
-      {
-        day: "Mon",
-        date: "2024/12/02",
-        subject: subjects.sem4.CN,
-        friendlyDate: (
-          <>
-            2<sup>nd</sup> December
-            <br />
-            17<sup>th</sup> Mangsir
-          </>
-        ),
-      },
-      {
-        day: "Thu",
-        date: "2024/12/05",
-        subject: subjects.sem4.OS,
-        friendlyDate: (
-          <>
-            5<sup>th</sup> December
-            <br />
-            20<sup>th</sup> Mangsir
+            31<sup>st</sup> Bhadra
           </>
         ),
       },
       {
         day: "Sun",
-        date: "2024/12/08",
-        subject: subjects.sem4.DBMS,
+        date: "2026/09/20",
+        time: "12:00 PM",
+        subject: subjects.sem4.CN,
         friendlyDate: (
           <>
-            8<sup>th</sup> December
+            20<sup>th</sup> September
             <br />
-            23<sup>rd</sup> Mangsir
+            4<sup>th</sup> Ashoj
           </>
         ),
       },
       {
         day: "Wed",
-        date: "2024/12/11",
+        date: "2026/09/23",
+        time: "12:00 PM",
+        subject: subjects.sem4.OS,
+        friendlyDate: (
+          <>
+            23<sup>rd</sup> September
+            <br />
+            7<sup>th</sup> Ashoj
+          </>
+        ),
+      },
+      {
+        day: "Sun",
+        date: "2026/09/27",
+        time: "12:00 PM",
+        subject: subjects.sem4.DBMS,
+        friendlyDate: (
+          <>
+            27<sup>th</sup> September
+            <br />
+            11<sup>th</sup> Ashoj
+          </>
+        ),
+      },
+      {
+        day: "Wed",
+        date: "2026/09/30",
+        time: "12:00 PM",
         subject: subjects.sem4.AI,
         friendlyDate: (
           <>
-            11<sup>th</sup> December
+            30<sup>th</sup> September
             <br />
-            26<sup>th</sup> Mangsir
+            14<sup>th</sup> Ashoj
           </>
         ),
       },
