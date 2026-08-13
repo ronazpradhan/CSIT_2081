@@ -100,7 +100,7 @@ export default function Countdown({
           gap: { xs: 2, sm: 4 },
           justifyContent: 'center',
           backgroundColor: 'rgba(15, 118, 110, 0.08)',
-          borderRadius: 10,
+          borderRadius: 2,
           py: 1.5,
           px: { xs: 3, sm: 5 },
         }}
