@@ -32,7 +32,9 @@ function Index() {
 
   const router = useRouter();
 
-  let semParam = router.asPath.split("/")[1];
+  // Use router.pathname instead of asPath to ignore query strings on the root URL
+  // e.g. "/1" -> "1", "/" -> ""
+  let pathSem = router.pathname === "/" ? "" : router.pathname.split("/")[1];
 
   useEffect(() => {
     const check = setTimeout(() => {
@@ -43,28 +45,32 @@ function Index() {
     return () => clearTimeout(check);
   }, []);
 
-  const [sem, setSem] = useState<Sem | null>(
-    (() => {
-      if (typeof window === "undefined") return null;
-      if (semParam) {
-        const semParamNum = parseInt(semParam);
-        if (
-          semParamNum >= 1 &&
-          semParamNum <= 8
-        ) {
-          localStorage.setItem("sem", semParam);
-          Router.replace(`/`);
-          return `sem${semParamNum}` as Sem;
-        }
-        localStorage.setItem("sem", currentSem.split("sem")[1]);
-        Router.replace(`/`);
-        return currentSem as Sem;
+  const [sem, setSem] = useState<Sem | null>(() => {
+    if (typeof window === "undefined") return null;
+    if (pathSem) {
+      const semParamNum = parseInt(pathSem);
+      if (semParamNum >= 1 && semParamNum <= 8) {
+        return `sem${semParamNum}` as Sem;
       }
-      return localStorage.getItem("sem")
-        ? (`sem${localStorage.getItem("sem")}` as Sem)
-        : (currentSem as Sem);
-    })(),
-  );
+      return currentSem as Sem;
+    }
+    return localStorage.getItem("sem")
+      ? (`sem${localStorage.getItem("sem")}` as Sem)
+      : (currentSem as Sem);
+  });
+
+  useEffect(() => {
+    if (pathSem) {
+      const semParamNum = parseInt(pathSem);
+      if (semParamNum >= 1 && semParamNum <= 8) {
+        localStorage.setItem("sem", pathSem);
+      } else {
+        localStorage.setItem("sem", currentSem.split("sem")[1]);
+      }
+      // Redirect to root, keeping any query parameters if needed
+      router.replace({ pathname: "/", query: router.query }, undefined, { shallow: true });
+    }
+  }, [pathSem, router]);
 
   useEffect(() => {
     if (sem) {
@@ -100,25 +106,20 @@ function Index() {
           >
             <Grid container spacing={2}>
               <Grid
-                sx={{
-                  mx: "auto",
-                }}
+                sx={{ mx: "auto" }}
                 size={{ xs: 12, sm: 12, lg: 7 }}
               >
                 <SemesterSelector sem={sem || currentSem} setSem={setSem} />
                 {(sem || currentSem) === "sem4" ? (
                   <>
                     <ExamRoutine sem="sem4" examType={examTypes.board} />
-                    <ClassRoutine sem={sem || currentSem} />
                   </>
                 ) : (
                   <SubjectList sem={sem || currentSem} />
                 )}
               </Grid>
               <Grid
-                sx={{
-                  mx: "auto",
-                }}
+                sx={{ mx: "auto" }}
                 size={{ xs: 12, sm: 12, lg: 5 }}
               >
                 <FrontPageGenerator sem={sem || currentSem} />

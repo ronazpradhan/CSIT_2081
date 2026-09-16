@@ -109,8 +109,11 @@ function DrawerAppBar(props: {
       <Box sx={{ display: "flex" }}>
         <AppBar
           component="nav"
+          elevation={0}
           sx={{
-            background: "linear-gradient(90deg, #0f766e, #06b6d4)",
+            backgroundColor: "#c7ceea",
+            borderBottom: "4px solid #333",
+            boxShadow: "0px 6px 0px #333",
             zIndex: 1500, // just greater than dropdown,
           }}
         >
@@ -126,7 +129,7 @@ function DrawerAppBar(props: {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { sm: "none" } }}
+                sx={{ mr: 2, display: { sm: "none" }, color: "#333" }}
               >
                 <MenuIcon />
               </IconButton>
@@ -137,15 +140,19 @@ function DrawerAppBar(props: {
               sx={{
                 textAlign: "center",
                 flexGrow: 1,
-                fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.8rem" },
-                fontWeight: "bold",
+                fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2.2rem" },
+                fontFamily: "'Fredoka One', 'Comic Sans MS', cursive, sans-serif",
+                color: "#333",
+                WebkitTextStroke: "1px #fff",
+                textShadow: "2px 2px 0px #fff",
+                transform: "rotate(-1deg)"
               }}
             >
               {props.text} {online ? "" : "- Offline"}
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item) => (
-                <Button key={item} sx={{ color: "#fff" }}>
+                <Button key={item} sx={{ color: "#333" }}>
                   {item}
                 </Button>
               ))}
@@ -159,13 +166,14 @@ function DrawerAppBar(props: {
                     setInstallDialogOpen(true);
                   }
                 }}
-                variant="outlined" 
+                variant="contained" 
                 size="small"
                 sx={{ 
-                  color: "#fff", 
-                  borderColor: "rgba(255,255,255,0.5)",
+                  backgroundColor: "#fff",
+                  color: "#333",
                   marginLeft: 1,
-                  "&:hover": { borderColor: "#fff", background: "rgba(255,255,255,0.1)" }
+                  boxShadow: "2px 2px 0px #333",
+                  "&:hover": { backgroundColor: "#fefefe", transform: "translate(-1px, -1px)", boxShadow: "3px 3px 0px #333" }
                 }}
               >
                 Install App

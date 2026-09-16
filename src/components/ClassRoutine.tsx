@@ -27,7 +27,7 @@ const tCellStyles = {
   py: { xs: 0.5, sm: 1 },
   fontSize: { xs: "0.8rem", sm: "0.875rem" },
   textAlign: "center",
-  border: "1px solid rgba(15, 118, 110, 0.12)",
+  border: "1px solid rgba(30, 58, 138, 0.12)",
 };
 
 const DAYS_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri"];
@@ -100,7 +100,7 @@ const RoutineTableCell = ({
         sx={{
           ...tCellStyles,
           backgroundColor: isToday
-            ? "rgba(15, 118, 110, 0.08)"
+            ? "rgba(30, 58, 138, 0.08)"
             : isTomorrow
             ? "rgba(6, 182, 212, 0.06)"
             : "inherit",
@@ -108,14 +108,14 @@ const RoutineTableCell = ({
           cursor: subject?.microSyllabus ? "pointer" : null,
           "&:hover": {
             backgroundColor: subject?.microSyllabus
-              ? "rgba(15, 118, 110, 0.18)"
+              ? "rgba(30, 58, 138, 0.18)"
               : null,
           },
           whiteSpace: "pre-wrap",
           fontWeight: 600,
         }}
       >
-        <span style={{ fontWeight: 700, color: "#0f766e" }}>{subject?.shortName}</span>
+        <span style={{ fontWeight: 700, color: "#1e3a8a" }}>{subject?.shortName}</span>
         <br />
         <span style={{ fontSize: "0.8rem", color: "#666" }}>{room}</span>
       </TableCell>
@@ -129,14 +129,14 @@ const RoutineTableCell = ({
           sx={{
             ...tCellStyles,
             backgroundColor: isToday
-              ? "rgba(15, 118, 110, 0.12)"
+              ? "rgba(30, 58, 138, 0.12)"
               : isTomorrow
               ? "rgba(6, 182, 212, 0.1)"
-              : "#f0fdf4",
+              : "#f0f4f8",
             fontWeight: 800,
             fontSize: "0.75rem",
             letterSpacing: "1px",
-            color: "#0f766e",
+            color: "#1e3a8a",
             px: 1,
           }}
         >
@@ -301,7 +301,7 @@ export default function ClassRoutine({
             }}
           >
 
-            <Typography variant="h5" component="div" sx={{ fontWeight: 800, color: "#0f766e", mb: 1 }}>
+            <Typography variant="h5" component="div" sx={{ fontWeight: 800, color: "#1e3a8a", mb: 1 }}>
               Class Routine
             </Typography>
 
@@ -319,17 +319,17 @@ export default function ClassRoutine({
               >
                 <FormControlLabel
                   value="syllabus"
-                  control={<Radio size="small" sx={{ color: "#0f766e", "&.Mui-checked": { color: "#0f766e" } }} />}
+                  control={<Radio size="small" sx={{ color: "#1e3a8a", "&.Mui-checked": { color: "#1e3a8a" } }} />}
                   label={<Typography sx={{ fontSize: "0.85rem", fontWeight: 700 }}>Syllabus</Typography>}
                 />
                 <FormControlLabel
                   value="notes"
-                  control={<Radio size="small" sx={{ color: "#0f766e", "&.Mui-checked": { color: "#0f766e" } }} />}
+                  control={<Radio size="small" sx={{ color: "#1e3a8a", "&.Mui-checked": { color: "#1e3a8a" } }} />}
                   label={<Typography sx={{ fontSize: "0.85rem", fontWeight: 700 }}>Notes</Typography>}
                 />
                 <FormControlLabel
                   value="question"
-                  control={<Radio size="small" sx={{ color: "#0f766e", "&.Mui-checked": { color: "#0f766e" } }} />}
+                  control={<Radio size="small" sx={{ color: "#1e3a8a", "&.Mui-checked": { color: "#1e3a8a" } }} />}
                   label={<Typography sx={{ fontSize: "0.85rem", fontWeight: 700 }}>Questions</Typography>}
                 />
               </RadioGroup>
@@ -361,9 +361,9 @@ export default function ClassRoutine({
                             setFullRoutine(!e.target.checked);
                           }}
                           sx={{
-                            color: "#0f766e",
+                            color: "#1e3a8a",
                             "&.Mui-checked": {
-                              color: "#0f766e",
+                              color: "#1e3a8a",
                             },
                           }}
                         />
@@ -377,7 +377,7 @@ export default function ClassRoutine({
                       <TableHead>
                         <TableRow
                           sx={{
-                            background: "linear-gradient(90deg, #0f766e 0%, #14b8a6 100%)",
+                            background: "linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%)",
                             "& .MuiTableCell-root": {
                               color: "#ffffff",
                               fontWeight: 700,
@@ -408,14 +408,14 @@ export default function ClassRoutine({
                               <TableRow
                                 sx={{
                                   backgroundColor: isToday
-                                    ? "rgba(15, 118, 110, 0.08)"
+                                    ? "rgba(30, 58, 138, 0.08)"
                                     : isTomorrow
                                     ? "rgba(6, 182, 212, 0.06)"
                                     : "#ffffff",
                                   borderLeft: isToday
-                                    ? "4px solid #0f766e"
+                                    ? "4px solid #1e3a8a"
                                     : isTomorrow
-                                    ? "4px solid #06b6d4"
+                                    ? "4px solid #4f46e5"
                                     : "none",
                                 }}
                               >
@@ -429,7 +429,7 @@ export default function ClassRoutine({
                                   {isToday ? (
                                     <Box
                                       sx={{
-                                        backgroundColor: "#0f766e",
+                                        backgroundColor: "#1e3a8a",
                                         color: "#fff",
                                         borderRadius: "6px",
                                         fontSize: "0.7rem",
@@ -446,7 +446,7 @@ export default function ClassRoutine({
                                   ) : isTomorrow ? (
                                     <Box
                                       sx={{
-                                        backgroundColor: "#06b6d4",
+                                        backgroundColor: "#4f46e5",
                                         color: "#fff",
                                         borderRadius: "6px",
                                         fontSize: "0.7rem",
@@ -510,25 +510,25 @@ export default function ClassRoutine({
                             fontSize: "0.8rem",
                             transition: "all 0.2s ease",
                             backgroundColor: isSelected
-                              ? "#0f766e"
+                              ? "#1e3a8a"
                               : isToday
-                              ? "rgba(15, 118, 110, 0.12)"
+                              ? "rgba(30, 58, 138, 0.12)"
                               : isTomorrow
                               ? "rgba(6, 182, 212, 0.08)"
                               : "#f3f4f6",
                             color: isSelected
                               ? "#ffffff"
                               : isToday
-                              ? "#0f766e"
+                              ? "#1e3a8a"
                               : isTomorrow
                               ? "#0891b2"
                               : "#4b5563",
                             border: isSelected
-                              ? "1px solid #0f766e"
+                              ? "1px solid #1e3a8a"
                               : isToday
-                              ? "1px solid #0f766e"
+                              ? "1px solid #1e3a8a"
                               : isTomorrow
-                              ? "1px solid #06b6d4"
+                              ? "1px solid #4f46e5"
                               : "1px solid transparent",
                           }}
                         >
@@ -552,7 +552,7 @@ export default function ClassRoutine({
 
                   {/* Day Status Header */}
                   <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: 1, px: 0.5 }}>
-                    <Typography sx={{ fontWeight: 800, color: "#0f766e", fontSize: "0.95rem" }}>
+                    <Typography sx={{ fontWeight: 800, color: "#1e3a8a", fontSize: "0.95rem" }}>
                       {selectedMobileDay === todayDayName
                         ? "Today's Schedule"
                         : selectedMobileDay === tomorrowDayName
@@ -560,11 +560,11 @@ export default function ClassRoutine({
                         : `${selectedMobileDay} Schedule`}
                     </Typography>
                     {selectedMobileDay === todayDayName ? (
-                      <Box sx={{ backgroundColor: "#0f766e", color: "#fff", px: 0.8, py: 0.2, borderRadius: "5px", fontSize: "0.7rem", fontWeight: 800 }}>
+                      <Box sx={{ backgroundColor: "#1e3a8a", color: "#fff", px: 0.8, py: 0.2, borderRadius: "5px", fontSize: "0.7rem", fontWeight: 800 }}>
                         TODAY
                       </Box>
                     ) : selectedMobileDay === tomorrowDayName ? (
-                      <Box sx={{ backgroundColor: "#06b6d4", color: "#fff", px: 0.8, py: 0.2, borderRadius: "5px", fontSize: "0.7rem", fontWeight: 800 }}>
+                      <Box sx={{ backgroundColor: "#4f46e5", color: "#fff", px: 0.8, py: 0.2, borderRadius: "5px", fontSize: "0.7rem", fontWeight: 800 }}>
                         TOMORROW
                       </Box>
                     ) : null}
@@ -596,17 +596,17 @@ export default function ClassRoutine({
                                   height: "48px",
                                   px: 1.5,
                                   borderRadius: "8px",
-                                  backgroundColor: "#f0fdf4",
-                                  border: "1px dashed #0f766e",
+                                  backgroundColor: "#f0f4f8",
+                                  border: "1px dashed #1e3a8a",
                                   display: "flex",
                                   justifyContent: "space-between",
                                   alignItems: "center",
                                 }}
                               >
-                                <Typography sx={{ fontSize: "0.8rem", fontWeight: 700, color: "#0f766e" }}>
+                                <Typography sx={{ fontSize: "0.8rem", fontWeight: 700, color: "#1e3a8a" }}>
                                   8:45 - 9:15 AM
                                 </Typography>
-                                <Typography sx={{ fontSize: "0.8rem", fontWeight: 800, color: "#0f766e" }}>
+                                <Typography sx={{ fontSize: "0.8rem", fontWeight: 800, color: "#1e3a8a" }}>
                                   ☕ BREAK
                                 </Typography>
                               </Box>
@@ -622,12 +622,12 @@ export default function ClassRoutine({
                                 px: 1.5,
                                 borderRadius: "8px",
                                 backgroundColor: "#ffffff",
-                                border: "1px solid rgba(15, 118, 110, 0.12)",
-                                borderLeft: "4px solid #0f766e",
+                                border: "1px solid rgba(30, 58, 138, 0.12)",
+                                borderLeft: "4px solid #1e3a8a",
                                 cursor: subj?.microSyllabus ? "pointer" : "default",
                                 transition: "all 0.15s ease",
                                 "&:hover": {
-                                  backgroundColor: subj?.microSyllabus ? "rgba(15, 118, 110, 0.04)" : "#ffffff",
+                                  backgroundColor: subj?.microSyllabus ? "rgba(30, 58, 138, 0.04)" : "#ffffff",
                                 },
                               }}
                             >
@@ -638,7 +638,7 @@ export default function ClassRoutine({
                                 <Typography
                                   sx={{
                                     fontWeight: 800,
-                                    color: "#0f766e",
+                                    color: "#1e3a8a",
                                     fontSize: "0.95rem",
                                     lineHeight: 1.2,
                                     whiteSpace: "nowrap",
@@ -655,8 +655,8 @@ export default function ClassRoutine({
                                     px: 0.8,
                                     py: 0.3,
                                     borderRadius: "6px",
-                                    backgroundColor: "rgba(15, 118, 110, 0.08)",
-                                    color: "#0f766e",
+                                    backgroundColor: "rgba(30, 58, 138, 0.08)",
+                                    color: "#1e3a8a",
                                     fontSize: "0.75rem",
                                     fontWeight: 700,
                                     whiteSpace: "nowrap",

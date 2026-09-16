@@ -9,7 +9,7 @@ const Footer = () => {
     <Toolbar
       variant="dense"
       sx={{
-        background: "linear-gradient(90deg, #0f766e, #06b6d4)",
+        background: "linear-gradient(90deg, #1e3a8a, #4f46e5)",
         minHeight: "36px !important",
         p: "0.2rem env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left) !important",
       }}

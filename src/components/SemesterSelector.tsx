@@ -16,11 +16,9 @@ export default function SemesterSelector({
     <Card
       sx={{
         mb: 2,
-        borderRadius: "1rem",
-        background: "linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)",
-        border: "1px solid rgba(15, 118, 110, 0.15)",
+        backgroundColor: "transparent",
       }}
-      elevation={2}
+      elevation={0}
     >
       <CardContent sx={{ p: 2, pb: "16px !important" }}>
         <Box
@@ -31,12 +29,11 @@ export default function SemesterSelector({
           }}
         >
           <Typography
-            variant="h6"
+            variant="h5"
             sx={{
-              color: "#0f766e",
-              fontWeight: 800,
-              fontSize: "1.05rem",
-              mb: 1,
+              color: "#333",
+              mb: 2,
+              transform: "rotate(-2deg)",
             }}
           >
             Select Semester
@@ -63,24 +60,16 @@ export default function SemesterSelector({
                   <Button
                     key={s}
                     variant={isSelected ? "contained" : "outlined"}
+                    color="primary"
                     onClick={() => setSem(`sem${s}` as Sem)}
                     size="small"
                     sx={{
                       width: "100%",
                       minWidth: 0,
                       p: { xs: 0.5, sm: 1 },
-                      borderRadius: "0.5rem",
-                      fontWeight: 700,
                       fontSize: { xs: "0.75rem", sm: "0.85rem" },
-                      backgroundColor: isSelected ? "#0f766e" : "transparent",
-                      color: isSelected ? "#fff" : "#0f766e",
-                      borderColor: "#0f766e",
-                      "&:hover": {
-                        backgroundColor: isSelected
-                          ? "#0d645e"
-                          : "rgba(15, 118, 110, 0.04)",
-                        borderColor: "#0d645e",
-                      },
+                      transform: isSelected ? "translate(-2px, -2px)" : "none",
+                      boxShadow: isSelected ? "5px 5px 0px #333" : "3px 3px 0px #333",
                     }}
                   >
                     {label}

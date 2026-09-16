@@ -205,7 +205,7 @@ export default function FrontPageGenerator({ sem }: { sem: Sem }) {
               type="submit" 
               variant="contained"
               sx={{
-                background: "linear-gradient(45deg, #0f766e 30%, #06b6d4 90%)",
+                background: "linear-gradient(45deg, #1e3a8a 30%, #4f46e5 90%)",
                 color: "white",
                 fontWeight: "bold",
                 boxShadow: "0 3px 5px 2px rgba(6, 182, 212, .3)",

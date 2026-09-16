@@ -35,7 +35,7 @@ export default function FeedbackForm() {
           variant="h6" 
           component="h2" 
           gutterBottom 
-          sx={{ fontWeight: "bold", color: "#0f766e", display: "flex", alignItems: "center", gap: 1 }}
+          sx={{ fontWeight: "bold", color: "#1e3a8a", display: "flex", alignItems: "center", gap: 1 }}
         >
           <SendIcon color="primary" /> Feedback & Suggestions
         </Typography>
@@ -66,7 +66,7 @@ export default function FeedbackForm() {
             variant="contained"
             endIcon={<SendIcon />}
             sx={{
-              background: "linear-gradient(45deg, #0f766e 30%, #06b6d4 90%)",
+              background: "linear-gradient(45deg, #1e3a8a 30%, #4f46e5 90%)",
               color: "white",
               fontWeight: "bold",
               borderRadius: "24px",
@@ -77,7 +77,7 @@ export default function FeedbackForm() {
               boxShadow: "0 3px 5px 2px rgba(6, 182, 212, .3)",
               transition: "all 0.3s ease",
               "&:hover": {
-                background: "linear-gradient(45deg, #06b6d4 30%, #0f766e 90%)",
+                background: "linear-gradient(45deg, #4f46e5 30%, #1e3a8a 90%)",
                 transform: "translateY(-2px)",
                 boxShadow: "0 5px 12px 3px rgba(6, 182, 212, .4)",
               },

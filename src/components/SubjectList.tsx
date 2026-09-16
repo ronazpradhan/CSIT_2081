@@ -25,12 +25,9 @@ export default function SubjectList({
     <Card
       sx={{
         mt: 2,
-        borderRadius: "1rem",
-        background: "#ffffff",
-        border: "1px solid rgba(15, 118, 110, 0.15)",
-        boxShadow: "0 10px 30px -5px rgba(15, 118, 110, 0.08)",
+        backgroundColor: "transparent",
       }}
-      elevation={2}
+      elevation={0}
     >
       <CardContent sx={{ p: 2.5 }}>
         <Box
@@ -38,23 +35,29 @@ export default function SubjectList({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            mb: 2,
+            mb: 3,
+            backgroundColor: "#c7ceea",
+            p: 1.5,
+            borderRadius: "12px",
+            border: "3px solid #333",
+            boxShadow: "4px 4px 0px #333",
+            transform: "rotate(-1deg)",
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <MenuBookIcon sx={{ color: "#0f766e" }} />
+            <MenuBookIcon sx={{ color: "#333" }} />
             <Typography
-              variant="h6"
-              sx={{ color: "#0f766e", fontWeight: 800, fontSize: "1.1rem" }}
+              variant="h5"
+              sx={{ color: "#333", fontFamily: "'Fredoka One', 'Comic Sans MS', cursive, sans-serif" }}
             >
               Semester {sem.replace("sem", "")} Subjects
             </Typography>
           </Box>
         </Box>
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           {subjectList.length === 0 ? (
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{ color: "#333", fontWeight: 700 }}>
               No subjects found for this semester.
             </Typography>
           ) : (
@@ -62,25 +65,29 @@ export default function SubjectList({
               <Box
                 key={subj.shortName || subj.name}
                 sx={{
-                  p: 1.5,
-                  borderRadius: "0.75rem",
-                  background: "#f0fdf4",
-                  border: "1px solid rgba(15, 118, 110, 0.12)",
+                  p: 2,
+                  borderRadius: "12px",
+                  background: "#fff",
+                  border: "3px solid #333",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
                   flexWrap: "wrap",
-                  gap: 1,
-                  transition: "all 0.2s ease",
+                  gap: 2,
+                  boxShadow: "4px 4px 0px #333",
+                  transition: "transform 0.1s, box-shadow 0.1s",
                   "&:hover": {
-                    transform: "translateY(-1px)",
-                    boxShadow: "0 4px 12px rgba(15, 118, 110, 0.1)",
+                    transform: "translate(-2px, -2px)",
+                    boxShadow: "6px 6px 0px #333",
                   },
                 }}
               >
                 <Box>
-                  <Typography sx={{ fontWeight: 800, color: "#0f766e", fontSize: "0.95rem" }}>
-                    {subj.name} ({subj.shortName})
+                  <Typography sx={{ fontWeight: 900, color: "#333", fontSize: "1.1rem", fontFamily: "'Comic Sans MS', cursive, sans-serif" }}>
+                    {subj.name}
+                  </Typography>
+                  <Typography sx={{ fontWeight: 700, color: "#666", fontSize: "0.85rem" }}>
+                    {subj.shortName}
                   </Typography>
                 </Box>
                 <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
@@ -92,16 +99,10 @@ export default function SubjectList({
                       target="_blank"
                       rel="noopener noreferrer"
                       sx={{
-                        backgroundColor: "#4338ca",
-                        color: "#ffffff",
-                        fontWeight: 700,
-                        fontSize: "0.75rem",
-                        borderRadius: "8px",
-                        px: 1.5,
-                        py: 0.5,
-                        textTransform: "none",
+                        backgroundColor: "#c7ceea",
+                        color: "#333",
                         "&:hover": {
-                          backgroundColor: "#3730a3",
+                          backgroundColor: "#b5ead7",
                         },
                       }}
                     >
@@ -116,16 +117,10 @@ export default function SubjectList({
                       target="_blank"
                       rel="noopener noreferrer"
                       sx={{
-                        backgroundColor: "#0f766e",
-                        color: "#ffffff",
-                        fontWeight: 700,
-                        fontSize: "0.75rem",
-                        borderRadius: "8px",
-                        px: 1.5,
-                        py: 0.5,
-                        textTransform: "none",
+                        backgroundColor: "#c7ceea",
+                        color: "#333",
                         "&:hover": {
-                          backgroundColor: "#115e59",
+                          backgroundColor: "#b5bce0",
                         },
                       }}
                     >
@@ -137,9 +132,9 @@ export default function SubjectList({
                       size="small"
                       disabled
                       sx={{
-                        fontSize: "0.75rem",
-                        borderRadius: "8px",
-                        textTransform: "none",
+                        backgroundColor: "#eee",
+                        borderColor: "#ccc",
+                        boxShadow: "none"
                       }}
                     >
                       No Syllabus Link
