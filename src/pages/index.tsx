@@ -24,7 +24,7 @@ import { Card, CardContent, Typography } from "@mui/material";
 // import LeftSideCardMessage from "../components/LeftSideCardMessage";
 
 import SubjectList from "../components/SubjectList";
-import SemesterSelector from "../components/SemesterSelector";
+import NextExamTimer from "../components/NextExamTimer";
 
 function Index() {
   const theme = useTheme();
@@ -84,6 +84,8 @@ function Index() {
         text={`2081 BSc. CSIT - Sem ${
           (sem || currentSem).split("sem")[1]
         }`}
+        sem={sem || currentSem}
+        setSem={setSem}
       />
       <Box
         sx={{
@@ -109,7 +111,7 @@ function Index() {
                 sx={{ mx: "auto" }}
                 size={{ xs: 12, sm: 12, lg: 7 }}
               >
-                <SemesterSelector sem={sem || currentSem} setSem={setSem} />
+                <NextExamTimer sem={sem || currentSem} />
                 {(sem || currentSem) === "sem4" ? (
                   <>
                     <ExamRoutine sem="sem4" examType={examTypes.board} />

@@ -104,7 +104,7 @@ export default function ExamRoutine({
         >
 
           <Typography variant="h5" component="div" sx={{ color: '#333', fontWeight: 800 }}>
-            {title ? title : `${examType} Exam Routine`}
+            {title ? title : `${examType} Exam Routine`}{routine[0]?.time ? ` (${routine[0].time})` : ''}
           </Typography>
           <Typography
             variant="body2"
@@ -130,7 +130,7 @@ export default function ExamRoutine({
               </>
             ) : null}
           </Typography>
-          <Countdown yyyymmddDate={routine[0].date} hideTomorrow />
+
           {loading ? (
             <Box
               sx={{
@@ -202,11 +202,7 @@ export default function ExamRoutine({
                       <TableCell sx={tCellStyles} align="center">
                         Day
                       </TableCell>
-                      {routine[0].time ? (
-                        <TableCell sx={tCellStyles} align="center">
-                          Time
-                        </TableCell>
-                      ) : null}
+
                       {examType === examTypesObj.board ? (
                         <TableCell sx={tCellStyles} align="center">
                           Gap
@@ -276,14 +272,7 @@ export default function ExamRoutine({
                             ) : null}
                             {exam.day}
                           </TableCell>
-                          {exam.time ? (
-                            <TableCell
-                              sx={tCellStyles}
-                              align="center"
-                            >
-                              {exam.time}
-                            </TableCell>
-                          ) : null}
+
 
                           {examType === examTypesObj.board ? (
                             <TableCell sx={tCellStyles} align="center">

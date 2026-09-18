@@ -18,12 +18,14 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-const drawerWidth = 240;
-// const navItems = ["Home", "About", "Contact"];
-const navItems = [];
+import SemesterSelector from "./SemesterSelector";
+const drawerWidth = 300;
+const navItems: any[] = [];
 
 function DrawerAppBar(props: {
   text: string;
+  sem: any;
+  setSem: (sem: any) => void;
   window?: () => Window;
 }) {
   const { window: _window } = props;
@@ -89,6 +91,8 @@ function DrawerAppBar(props: {
         {props.text}
       </Typography>
       <Divider />
+      <SemesterSelector sem={props.sem} setSem={(sem) => { props.setSem(sem); setMobileOpen(false); }} />
+      <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
@@ -123,17 +127,15 @@ function DrawerAppBar(props: {
             }}
           ></Box>
           <Toolbar>
-            {navItems.length ? (
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { sm: "none" }, color: "#333" }}
-              >
-                <MenuIcon />
-              </IconButton>
-            ) : null}
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, color: "#333" }}
+            >
+              <MenuIcon />
+            </IconButton>
             <Typography
               variant="h6"
               component="div"
@@ -217,7 +219,7 @@ function DrawerAppBar(props: {
               keepMounted: true, // Better open performance on mobile.
             }}
             sx={{
-              display: { xs: "block", sm: "none" },
+              display: "block",
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
