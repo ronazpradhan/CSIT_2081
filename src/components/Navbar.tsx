@@ -140,8 +140,7 @@ function DrawerAppBar(props: {
               sx={{
                 textAlign: "center",
                 flexGrow: 1,
-                fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2.2rem" },
-                fontFamily: "'Fredoka One', 'Comic Sans MS', cursive, sans-serif",
+                fontSize: { xs: "1.1rem", sm: "1.5rem", md: "2rem" },
                 color: "#333",
                 WebkitTextStroke: "1px #fff",
                 textShadow: "2px 2px 0px #fff",

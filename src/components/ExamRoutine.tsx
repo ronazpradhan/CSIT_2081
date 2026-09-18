@@ -103,7 +103,7 @@ export default function ExamRoutine({
           }}
         >
 
-          <Typography variant="h5" component="div" sx={{ color: '#0f766e', fontWeight: 800 }}>
+          <Typography variant="h5" component="div" sx={{ color: '#333', fontWeight: 800 }}>
             {title ? title : `${examType} Exam Routine`}
           </Typography>
           <Typography
@@ -185,10 +185,11 @@ export default function ExamRoutine({
                   <TableHead>
                     <TableRow
                       sx={{
-                        background: "linear-gradient(90deg, #0f766e 0%, #14b8a6 100%)",
+                        background: "#c7ceea",
+                        borderBottom: "3px solid #333",
                         "& .MuiTableCell-root": {
-                          color: "#ffffff",
-                          fontWeight: 700,
+                          color: "#333",
+                          fontWeight: 900,
                           border: "none",
                         },
                       }}
@@ -233,7 +234,7 @@ export default function ExamRoutine({
                         <TableRow
                           sx={{
                             "&:nth-of-type(even)": {
-                              backgroundColor: "rgba(15, 118, 110, 0.02)",
+                              backgroundColor: "rgba(0, 0, 0, 0.04)",
                             },
                             height: "1px",
                           }}
@@ -290,8 +291,8 @@ export default function ExamRoutine({
                                 <Chip
                                   size="small"
                                   sx={{ 
-                                    backgroundColor: "rgba(15, 118, 110, 0.1)", 
-                                    color: "#0f766e", 
+                                    backgroundColor: "#c7ceea", 
+                                    color: "#333", 
                                     fontWeight: "bold", 
                                     border: "none",
                                     borderRadius: "8px",
