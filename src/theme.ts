@@ -149,15 +149,7 @@ const theme = createTheme({
         },
       },
     },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: "none",
-          borderRadius: 12,
-          fontWeight: 600,
-        },
-      },
-    },
+
   },
 });
 
