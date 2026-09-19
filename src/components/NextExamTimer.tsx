@@ -41,7 +41,6 @@ export default function NextExamTimer({ sem }: { sem: string }) {
     <Countdown 
       text={`Next Exam: ${subjectName}`}
       yyyymmddDate={nextExam.date} 
-      hideTomorrow 
     />
   );
 }
