@@ -58,7 +58,7 @@ export default function ExamRoutine({
     py: { xs: 0.2, sm: 0.4 },
     fontSize: { xs: "0.8rem", sm: "0.875rem" },
     height: "inherit",
-    border: "1px solid rgba(15, 118, 110, 0.12)",
+    border: "1px solid var(--mui-palette-divider)",
   };
 
   const routine = examRoutine[sem][examType];
@@ -78,14 +78,8 @@ export default function ExamRoutine({
       sx={{
         mt: 2,
         display: "flex",
-        borderRadius: ".6rem",
-        "&:hover": {
-          boxShadow:
-            "0 20px 20px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
-        },
         overflowX: "auto",
       }}
-      elevation={3}
     >
       <Box
         sx={{
@@ -103,7 +97,7 @@ export default function ExamRoutine({
           }}
         >
 
-          <Typography variant="h5" component="div" sx={{ color: '#333', fontWeight: 800 }}>
+          <Typography variant="h6" component="h2" sx={{ textTransform: "capitalize" }}>
             {title ? title : `${examType} Exam Routine`}{routine[0]?.time ? ` (${routine[0].time})` : ''}
           </Typography>
           <Typography
@@ -185,10 +179,9 @@ export default function ExamRoutine({
                   <TableHead>
                     <TableRow
                       sx={{
-                        background: "#c7ceea",
-                        borderBottom: "3px solid #333",
+                        backgroundColor: "action.hover",
                         "& .MuiTableCell-root": {
-                          color: "#333",
+                          color: "text.primary",
                           fontWeight: 900,
                           border: "none",
                         },
@@ -280,9 +273,9 @@ export default function ExamRoutine({
                                 <Chip
                                   size="small"
                                   sx={{ 
-                                    backgroundColor: "#c7ceea", 
-                                    color: "#333", 
-                                    fontWeight: "bold", 
+                                    backgroundColor: "action.selected", 
+                                    color: "text.primary", 
+                                    fontWeight: 600,
                                     border: "none",
                                     borderRadius: "8px",
                                   }}
@@ -312,7 +305,7 @@ export default function ExamRoutine({
                                 align="center"
                                 sx={{
                                   p: 1,
-                                  color: "black",
+                                  color: "text.primary",
                                   height: "100%",
                                   width: "100%",
                                   display: "flex",
@@ -323,7 +316,7 @@ export default function ExamRoutine({
                                   "&:hover": exam.subject
                                     ?.microSyllabus
                                     ? {
-                                        backgroundColor: "#e3e3e3",
+                                        backgroundColor: "action.hover",
                                       }
                                     : null,
                                 }}
@@ -334,7 +327,7 @@ export default function ExamRoutine({
                                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                   <span>{exam.subject?.shortName}</span>
                                   {exam.subject?.code && (
-                                    <span style={{ fontSize: '0.75rem', color: '#666', fontWeight: 600 }}>{exam.subject?.code}</span>
+                                    <span style={{ fontSize: '0.75rem', color: 'var(--mui-palette-text-secondary)', fontFamily: 'var(--font-mono), monospace' }}>{exam.subject?.code}</span>
                                   )}
                                 </Box>
                               </Link>
@@ -361,7 +354,7 @@ export default function ExamRoutine({
                                       align="center"
                                       sx={{
                                         p: 1,
-                                        color: "black",
+                                        color: "text.primary",
                                         height: "100%",
                                         width: "100%",
                                         display: "flex",
@@ -371,14 +364,14 @@ export default function ExamRoutine({
                                         borderLeft:
                                           index === 0
                                             ? "none"
-                                            : "1px solid #d7d7d7",
+                                            : "1px solid var(--mui-palette-divider)",
 
                                         transition: "all .1s",
                                         "&:hover":
                                           subject.microSyllabus
                                             ? {
                                                 backgroundColor:
-                                                  "#e3e3e3",
+                                                  "action.hover",
                                               }
                                             : null,
                                       }}
@@ -389,7 +382,7 @@ export default function ExamRoutine({
                                       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                         <span>{subject?.shortName}</span>
                                         {subject?.code && (
-                                          <span style={{ fontSize: '0.75rem', color: '#666', fontWeight: 600 }}>{subject?.code}</span>
+                                          <span style={{ fontSize: '0.75rem', color: 'var(--mui-palette-text-secondary)', fontFamily: 'var(--font-mono), monospace' }}>{subject?.code}</span>
                                         )}
                                       </Box>
                                     </Link>
@@ -399,7 +392,7 @@ export default function ExamRoutine({
                                     //     // ...tCellStyles,
                                     //     // border: "none",
                                     //     borderLeft:
-                                    //       index === 0 ? "none" : "1px solid #d7d7d7",
+                                    //       index === 0 ? "none" : "1px solid var(--mui-palette-divider)",
                                     //     p: 1,
                                     //     backgroundColor: "#f6f6f6",
                                     //     flex: 1,
@@ -410,7 +403,7 @@ export default function ExamRoutine({
                                     //     cursor: subject?.microSyllabus ? "pointer" : null,
                                     //     "&:hover": {
                                     //       backgroundColor: subject?.microSyllabus
-                                    //         ? "#e3e3e3"
+                                    //         ? "action.hover"
                                     //         : null,
                                     //     },
                                     //     whiteSpace: "pre-wrap",

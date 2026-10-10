@@ -1,46 +1,6 @@
-::-webkit-scrollbar {
-  width: 8px;
-  /* for vertical scrollbars */
-  height: 8px;
-  /* for horizontal scrollbars */
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(15, 118, 110, 0.05);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(15, 118, 110, 0.3);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(15, 118, 110, 0.5);
-}
-
-html {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
-}
-
 body {
   word-wrap: break-word;
   overflow-wrap: break-word;
-}
-
-@font-face {
-  font-family: "Product Sans";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/Product Sans/ProductSans.woff") format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Product Sans";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/Product Sans/ProductSans-Bold.woff") format("woff");
-  font-display: swap;
 }
 
 // counter

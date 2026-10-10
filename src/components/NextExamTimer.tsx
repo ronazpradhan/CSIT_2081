@@ -30,17 +30,19 @@ export default function NextExamTimer({ sem }: { sem: string }) {
 
   if (!nextExam) return null;
 
-  let subjectName = "";
-  if (Array.isArray(nextExam.subject)) {
-    subjectName = nextExam.subject.map((s: any) => s.shortName).join(" / ");
-  } else if (nextExam.subject) {
-    subjectName = nextExam.subject.shortName;
-  }
+  const subjects: any[] = Array.isArray(nextExam.subject)
+    ? nextExam.subject
+    : nextExam.subject
+      ? [nextExam.subject]
+      : [];
+  const subjectName = subjects.map((s) => s.shortName).join(" / ");
+  const subjectFullName = subjects.map((s) => s.name).filter(Boolean).join(" / ");
 
   return (
-    <Countdown 
-      text={`Next Exam: ${subjectName}`}
-      yyyymmddDate={nextExam.date} 
+    <Countdown
+      title={subjectName}
+      subtitle={subjectFullName}
+      yyyymmddDate={nextExam.date}
     />
   );
 }

@@ -1,151 +1,127 @@
-import React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import EditOnGithubButton from "./EditOnGithubButton";
+import { visuallyHidden } from "@mui/utils";
 import { subjects } from "../constants/subjects";
 import { Sem } from "../constants/types";
+import { getSubjectTheme } from "../constants/subjectThemes";
 
-export default function SubjectList({
-  sem,
-  setContributeDialogOpen,
-  setContributeDialogTitle,
-}: {
-  sem: Sem;
-  setContributeDialogOpen?: (open: boolean) => void;
-  setContributeDialogTitle?: (title: string) => void;
-}) {
-  const semSubjectsObj = subjects[sem] || {};
-  const subjectList = Object.values(semSubjectsObj);
+export default function SubjectList({ sem }: { sem: Sem }) {
+  const subjectList = Object.values(subjects[sem] || {}) as any[];
 
   return (
-    <Card
-      sx={{
-        mt: 2,
-        backgroundColor: "transparent",
-      }}
-      elevation={0}
-    >
-      <CardContent sx={{ p: 2.5 }}>
+    <Box component="section" aria-labelledby="subjects-heading">
+      <Box sx={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 1, flexWrap: "wrap", mb: 1.5 }}>
+        <Typography id="subjects-heading" variant="h6" component="h2">
+          Subjects
+        </Typography>
+        <Typography sx={{ fontSize: "0.88rem", color: "text.secondary" }}>
+          Tap a subject for its syllabus
+        </Typography>
+      </Box>
+
+      {subjectList.length === 0 ? (
+        <Typography sx={{ py: 3, color: "text.secondary" }}>No subjects listed for this semester yet.</Typography>
+      ) : (
         <Box
+          component="ul"
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            mb: 3,
-            backgroundColor: "#c7ceea",
-            p: 1.5,
-            borderRadius: "12px",
-            border: "3px solid #333",
-            boxShadow: "4px 4px 0px #333",
-            transform: "rotate(-1deg)",
+            listStyle: "none",
+            m: 0,
+            p: 0,
+            display: "grid",
+            gridTemplateColumns: { xs: "repeat(2, 1fr)", sm: "repeat(3, 1fr)" },
+            gap: 1,
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <MenuBookIcon sx={{ color: "#333" }} />
-            <Typography
-              variant="h5"
-              sx={{ color: "#333", fontFamily: "'Fredoka One', 'Comic Sans MS', cursive, sans-serif" }}
-            >
-              Semester {sem.replace("sem", "")} Subjects
-            </Typography>
-          </Box>
-        </Box>
-
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          {subjectList.length === 0 ? (
-            <Typography variant="body2" sx={{ color: "#333", fontWeight: 700 }}>
-              No subjects found for this semester.
-            </Typography>
-          ) : (
-            subjectList.map((subj: any) => (
-              <Box
-                key={subj.shortName || subj.name}
-                sx={{
-                  p: 2,
-                  borderRadius: "12px",
-                  background: "#fff",
-                  border: "3px solid #333",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  flexWrap: "wrap",
-                  gap: 2,
-                  boxShadow: "4px 4px 0px #333",
-                  transition: "transform 0.1s, box-shadow 0.1s",
-                  "&:hover": {
-                    transform: "translate(-2px, -2px)",
-                    boxShadow: "6px 6px 0px #333",
-                  },
-                }}
-              >
-                <Box>
-                  <Typography sx={{ fontWeight: 900, color: "#333", fontSize: "1.1rem", fontFamily: "'Comic Sans MS', cursive, sans-serif" }}>
+          {subjectList.map((subj) => {
+            const href = subj.microSyllabus || subj.download?.link;
+            const { icon: Icon, bg, ink } = getSubjectTheme(subj.name);
+            return (
+              <Box component="li" key={subj.shortName || subj.name} sx={{ display: "flex" }}>
+                <Box
+                  component={href ? "a" : "div"}
+                  {...(href ? { href, target: "_blank", rel: "noopener noreferrer" } : {})}
+                  sx={{
+                    position: "relative",
+                    overflow: "hidden",
+                    isolation: "isolate",
+                    flex: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 0.25,
+                    p: 1.5,
+                    pr: 5,
+                    minHeight: 92,
+                    borderRadius: 2.5,
+                    border: 1,
+                    borderColor: "transparent",
+                    backgroundColor: bg,
+                    color: "text.primary",
+                    textDecoration: "none",
+                    transition:
+                      "transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s cubic-bezier(.16,1,.3,1), border-color .2s",
+                    "& .subject-icon": {
+                      transition: "transform .4s cubic-bezier(.16,1,.3,1), opacity .25s",
+                    },
+                    ...(href && {
+                      cursor: "pointer",
+                      "&:hover": {
+                        transform: "translateY(-3px)",
+                        borderColor: ink,
+                        boxShadow: `0 10px 22px -12px ${ink}`,
+                        "& .subject-icon": { transform: "scale(1.12) rotate(-8deg)", opacity: 0.32 },
+                        "& .subject-short": { color: ink },
+                      },
+                      "&:active": { transform: "translateY(-1px) scale(0.98)" },
+                    }),
+                  }}
+                >
+                  <Icon
+                    className="subject-icon"
+                    aria-hidden
+                    sx={{
+                      position: "absolute",
+                      right: -10,
+                      bottom: -12,
+                      fontSize: 76,
+                      color: ink,
+                      opacity: 0.18,
+                      zIndex: -1,
+                      pointerEvents: "none",
+                    }}
+                  />
+                  <Typography className="subject-short" sx={{ fontWeight: 800, fontSize: "1.05rem", lineHeight: 1.2, transition: "color .2s" }}>{subj.shortName}</Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "0.82rem",
+                      color: "text.secondary",
+                      lineHeight: 1.35,
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                    }}
+                  >
                     {subj.name}
                   </Typography>
-                  <Typography sx={{ fontWeight: 700, color: "#666", fontSize: "0.85rem" }}>
-                    {subj.shortName}
-                  </Typography>
-                </Box>
-                <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                  {subj.download && (
-                    <Button
-                      variant="contained"
-                      size="small"
-                      href={subj.download.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      sx={{
-                        backgroundColor: "#c7ceea",
-                        color: "#333",
-                        "&:hover": {
-                          backgroundColor: "#b5ead7",
-                        },
-                      }}
-                    >
-                      {subj.download.name}
-                    </Button>
+                  {subj.code && (
+                    <Typography sx={{ mt: "auto", pt: 0.5, fontSize: "0.75rem", fontWeight: 600, color: "text.secondary" }}>
+                      {subj.code}
+                    </Typography>
                   )}
-                  {subj.microSyllabus ? (
-                    <Button
-                      variant="contained"
-                      size="small"
-                      href={subj.microSyllabus}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      sx={{
-                        backgroundColor: "#c7ceea",
-                        color: "#333",
-                        "&:hover": {
-                          backgroundColor: "#b5bce0",
-                        },
-                      }}
-                    >
-                      Micro Syllabus
-                    </Button>
+                  {href ? (
+                    <Box component="span" sx={visuallyHidden}>
+                      Open syllabus (new tab)
+                    </Box>
                   ) : (
-                    <Button
-                      variant="outlined"
-                      size="small"
-                      disabled
-                      sx={{
-                        backgroundColor: "#eee",
-                        borderColor: "#ccc",
-                        boxShadow: "none"
-                      }}
-                    >
-                      No Syllabus Link
-                    </Button>
+                    <Typography sx={{ fontSize: "0.75rem", color: "text.secondary", mt: 0.5 }}>No syllabus yet</Typography>
                   )}
                 </Box>
               </Box>
-            ))
-          )}
+            );
+          })}
         </Box>
-      </CardContent>
-    </Card>
+      )}
+    </Box>
   );
 }

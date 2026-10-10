@@ -7,29 +7,23 @@ import Toolbar from "@mui/material/Toolbar";
 import Grid from "@mui/material/Grid";
 import dynamic from "next/dynamic";
 
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import ClassRoutine from "../components/ClassRoutine";
 import ExamRoutine from "../components/ExamRoutine";
 import FeedbackForm from "../components/FeedbackForm";
 
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { currentSem, examTypes } from "../constants";
 import { Sem } from "../constants/types";
-import { useBaseStore } from "../store";
 import { checkCollegeEmail } from "../utils/checkCollegeEmail";
-import Countdown from "../components/Countdown";
-import { Card, CardContent, Typography } from "@mui/material";
-// import LeftSideCardMessage from "../components/LeftSideCardMessage";
 
 import SubjectList from "../components/SubjectList";
+import SemesterSelector from "../components/SemesterSelector";
+import Typography from "@mui/material/Typography";
+import { subjects } from "../constants/subjects";
 import NextExamTimer from "../components/NextExamTimer";
+import TodayClasses from "../components/TodayClasses";
 
 function Index() {
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
-
   const router = useRouter();
 
   // Use router.pathname instead of asPath to ignore query strings on the root URL
@@ -78,63 +72,97 @@ function Index() {
     }
   }, [sem]);
 
+  const activeSem = (sem || currentSem) as Sem;
+  const semNumber = parseInt(activeSem.replace("sem", ""), 10);
+  const subjectCount = Object.keys(subjects[activeSem] || {}).length;
+
   return (
     <>
-      <Navbar
-        text={`2081 BSc. CSIT - Sem ${
-          (sem || currentSem).split("sem")[1]
-        }`}
-        sem={sem || currentSem}
-        setSem={setSem}
-      />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-        }}
-      >
-        <Toolbar />
+      <Navbar />
+      <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+        <Toolbar sx={{ minHeight: { xs: 60, sm: 68 } }} />
+        <Box sx={{ height: "env(safe-area-inset-top)" }} />
         <Container
+          component="main"
+          id="main"
+          tabIndex={-1}
           sx={{
-            py: 4,
             flex: 1,
+            pt: { xs: 3, sm: 5 },
+            pb: { xs: 4, sm: 6 },
+            pl: "max(16px, env(safe-area-inset-left))",
+            pr: "max(16px, env(safe-area-inset-right))",
           }}
         >
           <Box
             sx={{
-              p: "env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left)",
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              alignItems: { xs: "stretch", md: "flex-end" },
+              justifyContent: "space-between",
+              gap: { xs: 2.5, md: 4 },
+              mb: { xs: 3.5, sm: 5 },
             }}
           >
-            <Grid container spacing={2}>
-              <Grid
-                sx={{ mx: "auto" }}
-                size={{ xs: 12, sm: 12, lg: 7 }}
+            <Box>
+              <Typography sx={{ color: "text.secondary", fontWeight: 600, mb: 0.75 }}>
+                {greeting()} · BSc. CSIT, batch 2081
+              </Typography>
+              <Typography
+                key={activeSem}
+                variant="h1"
+                sx={{
+                  fontSize: "clamp(2.1rem, 5vw, 3.25rem)",
+                  animation: "semIn .5s cubic-bezier(.16,1,.3,1)",
+                  "@keyframes semIn": {
+                    from: { opacity: 0.4, transform: "translateY(4px)" },
+                    to: { opacity: 1, transform: "none" },
+                  },
+                }}
               >
-                <NextExamTimer sem={sem || currentSem} />
-                {(sem || currentSem) === "sem4" ? (
-                  <>
-                    <ExamRoutine sem="sem4" examType={examTypes.board} />
-                  </>
-                ) : (
-                  <SubjectList sem={sem || currentSem} />
-                )}
-              </Grid>
-              <Grid
-                sx={{ mx: "auto" }}
-                size={{ xs: 12, sm: 12, lg: 5 }}
-              >
-                <FrontPageGenerator sem={sem || currentSem} />
-                <FeedbackForm />
-              </Grid>
-            </Grid>
+                <Box component="span" sx={{ color: "primary.main" }}>
+                  {ordinalWords[semNumber - 1]}
+                </Box>{" "}
+                semester
+              </Typography>
+            </Box>
+            <Box>
+              <Typography id="semester-label" component="p" sx={{ fontWeight: 700, fontSize: "0.9rem", mb: 0.75 }}>
+                Switch semester
+              </Typography>
+              <SemesterSelector sem={activeSem} setSem={setSem} />
+            </Box>
           </Box>
+
+          <Grid container spacing={{ xs: 4, lg: 5 }}>
+            <Grid size={{ xs: 12, lg: 7 }} sx={{ display: "flex", flexDirection: "column", gap: 3.5 }}>
+              <NextExamTimer sem={activeSem} />
+              <TodayClasses sem={activeSem} />
+              {activeSem === "sem4" && <ExamRoutine sem="sem4" examType={examTypes.board} />}
+              <SubjectList sem={activeSem} />
+            </Grid>
+            <Grid size={{ xs: 12, lg: 5 }} sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <FrontPageGenerator sem={activeSem} />
+              <FeedbackForm sem={activeSem} />
+            </Grid>
+          </Grid>
         </Container>
         <Footer />
       </Box>
     </>
   );
 }
+
+function greeting() {
+  const hour = Number(
+    new Date().toLocaleString("en-US", { hour: "numeric", hour12: false, timeZone: "Asia/Kathmandu" })
+  );
+  if (hour < 12) return "Good morning";
+  if (hour < 17) return "Good afternoon";
+  return "Good evening";
+}
+
+const ordinalWords = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth"];
 
 export default dynamic(() => Promise.resolve(Index), {
   ssr: false,

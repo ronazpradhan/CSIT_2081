@@ -1,241 +1,129 @@
 import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import SemesterSelector from "./SemesterSelector";
-const drawerWidth = 300;
-const navItems: any[] = [];
+import Container from "@mui/material/Container";
+import CloudOffRoundedIcon from "@mui/icons-material/CloudOffRounded";
+import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
 
-function DrawerAppBar(props: {
-  text: string;
-  sem: any;
-  setSem: (sem: any) => void;
-  window?: () => Window;
-}) {
-  const { window: _window } = props;
-  const [mobileOpen, setMobileOpen] = useState(false);
-
+export default function Navbar() {
   const [online, setOnline] = useState(
     typeof window === "undefined" || navigator.onLine
   );
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    window.addEventListener("online", () => setOnline(true));
-    window.addEventListener("offline", () => setOnline(false));
+    const goOnline = () => setOnline(true);
+    const goOffline = () => setOnline(false);
+    window.addEventListener("online", goOnline);
+    window.addEventListener("offline", goOffline);
     return () => {
-      window.removeEventListener("online", () => setOnline(true));
-      window.removeEventListener("offline", () => setOnline(false));
+      window.removeEventListener("online", goOnline);
+      window.removeEventListener("offline", goOffline);
     };
   }, []);
 
-  const [isInstallable, setIsInstallable] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsInstallable(!window.matchMedia("(display-mode: standalone)").matches);
-    }
-  }, []);
-
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-
-  useEffect(() => {
-    const handler = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-      setIsInstallable(true);
-    };
-    window.addEventListener("beforeinstallprompt", handler);
-    window.addEventListener("appinstalled", () => {
-      setDeferredPrompt(null);
-      setIsInstallable(false);
-    });
-    return () => window.removeEventListener("beforeinstallprompt", handler);
-  }, []);
-
-  const handleInstall = async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === "accepted") {
-      setDeferredPrompt(null);
-      setIsInstallable(false);
-    }
-  };
-
-  const [installDialogOpen, setInstallDialogOpen] = useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        {props.text}
-      </Typography>
-      <Divider />
-      <SemesterSelector sem={props.sem} setSem={(sem) => { props.setSem(sem); setMobileOpen(false); }} />
-      <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
-  const container =
-    _window !== undefined ? () => _window().document.body : undefined;
+  const today = new Date().toLocaleDateString("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    timeZone: "Asia/Kathmandu",
+  });
 
   return (
     <>
-      <Box sx={{ display: "flex" }}>
-        <AppBar
-          component="nav"
-          elevation={0}
-          sx={{
-            backgroundColor: "#c7ceea",
-            borderBottom: "4px solid #333",
-            boxShadow: "0px 6px 0px #333",
-            zIndex: 1500, // just greater than dropdown,
-          }}
-        >
-          <Box
-            sx={{
-              height: "env(safe-area-inset-top)",
-            }}
-          ></Box>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, color: "#333" }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{
-                textAlign: "center",
-                flexGrow: 1,
-                fontSize: { xs: "1.1rem", sm: "1.5rem", md: "2rem" },
-                color: "#333",
-                WebkitTextStroke: "1px #fff",
-                textShadow: "2px 2px 0px #fff",
-                transform: "rotate(-1deg)"
-              }}
-            >
-              {props.text} {online ? "" : "- Offline"}
-            </Typography>
-            <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              {navItems.map((item) => (
-                <Button key={item} sx={{ color: "#333" }}>
-                  {item}
-                </Button>
-              ))}
+      <Box
+        component="a"
+        href="#main"
+        sx={{
+          position: "fixed",
+          top: 8,
+          left: 8,
+          zIndex: 2000,
+          px: 2,
+          py: 1.25,
+          borderRadius: 2,
+          fontWeight: 700,
+          backgroundColor: "secondary.main",
+          color: "secondary.contrastText",
+          transform: "translateY(-200%)",
+          "&:focus": { transform: "none" },
+        }}
+      >
+        Skip to main content
+      </Box>
+
+      <AppBar
+        component="header"
+        elevation={0}
+        position="fixed"
+        sx={{
+          backgroundColor: "background.default",
+          color: "text.primary",
+          borderBottom: 1,
+          borderColor: "divider",
+          zIndex: 1500,
+        }}
+      >
+        <Box sx={{ height: "env(safe-area-inset-top)" }} />
+        <Container>
+          <Toolbar disableGutters sx={{ minHeight: { xs: 60, sm: 68 }, gap: { xs: 1, sm: 2 } }}>
+            <Box sx={{ display: "flex", alignItems: "baseline", gap: 1.5, flexGrow: 1, minWidth: 0 }}>
+              <Typography
+                component="p"
+                sx={{ fontSize: { xs: "1.3rem", sm: "1.45rem" }, fontWeight: 800, letterSpacing: "-0.01em", lineHeight: 1 }}
+              >
+                CSIT{" "}
+                <Box component="span" sx={{ color: "primary.main" }}>
+                  2081
+                </Box>
+              </Typography>
             </Box>
-            {isInstallable && (
-              <Button 
-                onClick={() => {
-                  if (deferredPrompt) {
-                    handleInstall();
-                  } else {
-                    setInstallDialogOpen(true);
-                  }
-                }}
-                variant="contained" 
-                size="small"
-                sx={{ 
-                  backgroundColor: "#fff",
-                  color: "#333",
-                  marginLeft: 1,
-                  boxShadow: "2px 2px 0px #333",
-                  "&:hover": { backgroundColor: "#fefefe", transform: "translate(-1px, -1px)", boxShadow: "3px 3px 0px #333" }
+
+            {!online && (
+              <Box
+                role="status"
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.75,
+                  fontSize: "0.9rem",
+                  fontWeight: 700,
+                  color: "text.primary",
+                  px: 1.5,
+                  py: 0.5,
+                  borderRadius: 999,
+                  backgroundColor: "#fdecc8",
                 }}
               >
-                Install App
-              </Button>
+                <CloudOffRoundedIcon sx={{ fontSize: 18 }} aria-hidden />
+                Offline
+              </Box>
             )}
+
+            <Typography
+              component="p"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 0.75,
+                px: 1.5,
+                py: 0.75,
+                borderRadius: 999,
+                border: 1,
+                borderColor: "divider",
+                backgroundColor: "background.paper",
+                fontSize: "0.9rem",
+                fontWeight: 700,
+                whiteSpace: "nowrap",
+              }}
+            >
+              <CalendarTodayRoundedIcon sx={{ fontSize: 16, color: "primary.main" }} aria-hidden />
+              {today}
+            </Typography>
           </Toolbar>
-        </AppBar>
-        
-        <Dialog
-          open={installDialogOpen}
-          onClose={() => setInstallDialogOpen(false)}
-          aria-labelledby="install-dialog-title"
-          aria-describedby="install-dialog-description"
-        >
-          <DialogTitle id="install-dialog-title">
-            Install App Manually
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText id="install-dialog-description">
-              It looks like your browser isn't triggering the automatic install prompt.
-              <br/><br/>
-              <b>On Android (Chrome):</b> Tap the three dots menu (⋮) at the top right and select <b>"Add to Home screen"</b>.
-              <br/><br/>
-              <b>On iPhone (Safari):</b> Tap the Share button (square with an arrow pointing up) at the bottom and select <b>"Add to Home Screen"</b>.
-              <br/><br/>
-              <b>On Desktop:</b> Look for an install icon (a screen with a down arrow) on the far right of your address bar.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => setInstallDialogOpen(false)} autoFocus>
-              Got it
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <Box component="nav">
-          <Drawer
-            container={container}
-            variant="temporary"
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-            sx={{
-              display: "block",
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
-                width: drawerWidth,
-              },
-            }}
-          >
-            {drawer}
-          </Drawer>
-        </Box>
-      </Box>
+        </Container>
+      </AppBar>
     </>
   );
 }
-
-DrawerAppBar.propTypes = {
-  window: PropTypes.func,
-};
-
-export default DrawerAppBar;

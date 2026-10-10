@@ -1,92 +1,89 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import SendIcon from "@mui/icons-material/Send";
+import Link from "@mui/material/Link";
+import SendRoundedIcon from "@mui/icons-material/SendRounded";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { Sem } from "../constants/types";
 
-export default function FeedbackForm() {
+const EMAIL = "hi.ronajpradhan@gmail.com";
+
+export default function FeedbackForm({ sem }: { sem: Sem }) {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const [messageError, setMessageError] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`CSIT 2081 Platform Feedback from ${name}`);
-    const body = encodeURIComponent(`${message}\n\nFrom: ${name}`);
-    window.location.href = `mailto:hi.ronajpradhan@gmail.com?subject=${subject}&body=${body}`;
+    if (!message.trim()) {
+      setMessageError(true);
+      return;
+    }
+    const from = name.trim() || "a student";
+    const subject = encodeURIComponent(`CSIT 2081 feedback from ${from}`);
+    const context = `Semester ${sem.replace("sem", "")} · ${window.innerWidth < 720 ? "Phone" : "Computer"}`;
+    const body = encodeURIComponent(`${message.trim()}\n\nFrom: ${from}\n${context}`);
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
   };
 
   return (
-    <Card 
-      sx={{ 
-        mt: 2, 
-        borderRadius: ".6rem",
-        "&:hover": {
-          boxShadow:
-            "0 20px 20px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
-        },
-      }}
-      elevation={3}
-    >
-      <CardContent sx={{ p: 3 }}>
-        <Typography 
-          variant="h6" 
-          component="h2" 
-          gutterBottom 
-          sx={{ fontWeight: "bold", color: "#1e3a8a", display: "flex", alignItems: "center", gap: 1 }}
-        >
-          <SendIcon color="primary" /> Feedback & Suggestions
-        </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-          Found a bug? Have a suggestion for the platform? Or just want to say hi? Fill out the form below to shoot me an email directly!
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          <TextField
-            label="Your Name"
-            variant="outlined"
-            fullWidth
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <TextField
-            label="Your Message"
-            variant="outlined"
-            multiline
-            rows={2}
-            fullWidth
-            required
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            endIcon={<SendIcon />}
-            sx={{
-              background: "linear-gradient(45deg, #1e3a8a 30%, #4f46e5 90%)",
-              color: "white",
-              fontWeight: "bold",
-              borderRadius: "24px",
-              padding: "10px 24px",
-              textTransform: "none",
-              fontSize: "1rem",
-              alignSelf: { xs: "stretch", sm: "flex-start" },
-              boxShadow: "0 3px 5px 2px rgba(6, 182, 212, .3)",
-              transition: "all 0.3s ease",
-              "&:hover": {
-                background: "linear-gradient(45deg, #4f46e5 30%, #1e3a8a 90%)",
-                transform: "translateY(-2px)",
-                boxShadow: "0 5px 12px 3px rgba(6, 182, 212, .4)",
-              },
-            }}
-          >
-            Send via Gmail
+    <Card component="section" aria-labelledby="feedback-heading" sx={{ p: { xs: 2.5, sm: 3 } }}>
+      <Typography id="feedback-heading" variant="h6" component="h2">
+        Feedback &amp; suggestions
+      </Typography>
+      <Typography variant="body2" sx={{ color: "text.secondary", mt: 0.5, mb: 2 }}>
+        Tell us what to fix or add next.
+      </Typography>
+
+      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 1.75 }}>
+        <TextField
+          label="Message"
+          multiline
+          minRows={3}
+          maxRows={8}
+          fullWidth
+          required
+          value={message}
+          placeholder="Found a bug, missing something, or have an idea? Write it here."
+          error={messageError}
+          helperText={messageError ? "Write a few words before sending." : undefined}
+          slotProps={{ inputLabel: { shrink: true } }}
+          onChange={(e) => {
+            setMessage(e.target.value);
+            if (messageError) setMessageError(false);
+          }}
+          sx={{ "& .MuiFormHelperText-root": { mx: 0.5, mt: 0.5 } }}
+        />
+        <TextField
+          label="Your name (optional)"
+          size="small"
+          fullWidth
+          autoComplete="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, flexWrap: "wrap" }}>
+          <Button type="submit" variant="contained" color="secondary" startIcon={<SendRoundedIcon />}>
+            Send feedback
           </Button>
+          <Typography sx={{ fontSize: "0.82rem", color: "text.secondary" }}>Opens your email app</Typography>
         </Box>
-      </CardContent>
+
+        <Link
+          href="https://github.com/ronazpradhan/CSIT_2081/issues"
+          target="_blank"
+          rel="noopener noreferrer"
+          underline="hover"
+          sx={{ display: "inline-flex", alignItems: "center", gap: 0.75, fontSize: "0.85rem", fontWeight: 600, color: "text.secondary", alignSelf: "flex-start" }}
+        >
+          <GitHubIcon sx={{ fontSize: 16 }} aria-hidden />
+          Comfortable with GitHub? Open an issue instead
+        </Link>
+      </Box>
     </Card>
   );
 }

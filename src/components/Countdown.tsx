@@ -1,142 +1,126 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
+import { MONO } from "../theme";
+
+type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
+
+function getTimeLeft(target: Date): TimeLeft | null {
+  const diff = target.getTime() - Date.now();
+  if (diff <= 0) return null;
+  return {
+    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((diff / 1000 / 60) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+  };
+}
 
 export default function Countdown({
-  text,
+  title,
+  subtitle,
   yyyymmddDate,
-  hideTomorrow,
 }: {
-  text?: string;
+  title: string;
+  subtitle?: string;
   yyyymmddDate: `${number}/${number}/${number}`;
-  hideTomorrow?: boolean;
 }) {
-  const [timeLeft, setTimeLeft] = useState<{
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-  } | null>(null);
-
-  const nowDate = new Date();
-  const [hideDate, setHideDate] = useState(
-    hideTomorrow
-      ? new Date(nowDate.setDate(nowDate.getDate() + 1))
-      : nowDate
-  );
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const current = new Date();
-      setHideDate(
-        hideTomorrow
-          ? new Date(current.setDate(current.getDate() + 1))
-          : current
-      );
-    }, 60000);
-    return () => clearInterval(interval);
-  }, [hideTomorrow]);
+  const target = new Date(yyyymmddDate + " GMT+05:45");
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(() => getTimeLeft(target));
 
   useEffect(() => {
     const startDay = new Date(yyyymmddDate + " GMT+05:45");
-    function updateCounter() {
-      const now = new Date();
-      const diff = startDay.getTime() - now.getTime();
-      
-      if (diff <= 0) {
-        setTimeLeft((prev) => {
-          if (prev?.days === 0 && prev?.hours === 0 && prev?.minutes === 0 && prev?.seconds === 0) {
-            return prev;
-          }
-          return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-        });
-        return;
-      }
-      
-      setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / 1000 / 60) % 60),
-        seconds: Math.floor((diff / 1000) % 60),
-      });
-    }
-
-    const interval = setInterval(updateCounter, 1000);
-    updateCounter();
+    const tick = () => setTimeLeft(getTimeLeft(startDay));
+    tick();
+    const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
   }, [yyyymmddDate]);
 
-  const startDay = new Date(yyyymmddDate + " GMT+05:45");
+  const dateLabel = target.toLocaleDateString("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    timeZone: "Asia/Kathmandu",
+  });
 
-  if (startDay < hideDate) {
-    if (!text) return null;
-    if (startDay > new Date()) {
-      return (
-        <Typography
-          variant="h5"
-          component="div"
-          sx={{
-            textAlign: "center",
-            marginBottom: ".8rem",
-            color: "#1e3a8a",
-            fontWeight: 800
-          }}
-        >
-          {text} tomorrow
-        </Typography>
-      );
-    } else {
-      return null;
-    }
-  }
-
-  if (!timeLeft) return null;
+  const units = timeLeft
+    ? [
+        { label: "days", value: timeLeft.days },
+        { label: "hrs", value: timeLeft.hours },
+        { label: "min", value: timeLeft.minutes },
+        { label: "sec", value: timeLeft.seconds },
+      ]
+    : [];
 
   return (
-    <Box sx={{ my: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      {text && (
-        <Typography variant="h6" sx={{ color: '#1e3a8a', fontWeight: 800, mb: 2 }}>
-          {text}
+    <Box
+      component="section"
+      aria-label="Next exam countdown"
+      sx={{
+        position: "relative",
+        p: { xs: 2.25, sm: 2.75 },
+        borderRadius: "14px",
+        border: 1,
+        borderColor: "divider",
+        backgroundColor: "background.paper",
+      }}
+    >
+      <Box sx={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 2, flexWrap: "wrap" }}>
+        <Typography
+          component="h2"
+          sx={{ fontSize: "1.25rem", fontWeight: 700 }}
+        >
+          Next exam:{" "}
+          <Box component="span" sx={{ color: "primary.main" }}>
+            {title}
+          </Box>
+        </Typography>
+        <Typography sx={{ fontSize: "0.95rem", fontWeight: 700, color: "text.secondary" }}>
+          {dateLabel}
+        </Typography>
+      </Box>
+      {subtitle && (
+        <Typography variant="body2" sx={{ color: "text.secondary", mt: 0.25 }}>
+          {subtitle}
         </Typography>
       )}
-      <Paper
-        elevation={0}
-        sx={{
-          display: 'flex',
-          gap: { xs: 2, sm: 4 },
-          justifyContent: 'center',
-          backgroundColor: 'rgba(30, 58, 138, 0.08)',
-          borderRadius: 2,
-          py: 1.5,
-          px: { xs: 3, sm: 5 },
-        }}
-      >
-        {[
-          { label: 'Days', value: timeLeft.days },
-          { label: 'Hours', value: timeLeft.hours },
-          { label: 'Mins', value: timeLeft.minutes },
-          { label: 'Secs', value: timeLeft.seconds },
-        ].map((unit, index) => (
-          <Box key={unit.label} sx={{ display: 'flex', alignItems: 'center', gap: { xs: 2, sm: 4 } }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Typography variant="h4" sx={{ color: '#1e3a8a', fontWeight: 800, fontSize: { xs: '1.5rem', sm: '2rem' } }}>
-                {unit.value.toString().padStart(2, '0')}
+
+      {timeLeft ? (
+        <Box
+          role="timer"
+          aria-live="off"
+          aria-label={timeLeft ? `${timeLeft.days} days, ${timeLeft.hours} hours and ${timeLeft.minutes} minutes left` : undefined}
+          sx={{
+            mt: 2,
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: { xs: 1, sm: 1.5 },
+          }}
+        >
+          {units.map((unit) => (
+            <Box key={unit.label} sx={{ display: "flex", alignItems: "baseline", gap: 0.5 }}>
+              <Typography
+                sx={{
+                  fontFamily: MONO,
+                  fontVariantNumeric: "tabular-nums",
+                  fontSize: { xs: "2rem", sm: "2.6rem" },
+                  fontWeight: 700,
+                  lineHeight: 1,
+                }}
+              >
+                {unit.value.toString().padStart(2, "0")}
               </Typography>
-              <Typography variant="caption" sx={{ color: '#1e3a8a', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, fontSize: '0.65rem' }}>
+              <Typography sx={{ fontSize: "0.9rem", color: "text.secondary", fontWeight: 700 }}>
                 {unit.label}
               </Typography>
             </Box>
-            {index < 3 && (
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Typography variant="h4" sx={{ color: 'rgba(30, 58, 138, 0.4)', fontWeight: 800 }}>
-                  :
-                </Typography>
-              </Box>
-            )}
-          </Box>
-        ))}
-      </Paper>
+          ))}
+        </Box>
+      ) : (
+        <Typography sx={{ mt: 1.5, fontWeight: 600, color: "primary.main" }}>
+          Underway today. Good luck!
+        </Typography>
+      )}
     </Box>
   );
 }

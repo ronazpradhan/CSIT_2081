@@ -5,7 +5,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
 import createEmotionCache from "../createEmotionCache";
-import theme from "../theme";
+import theme, { fontClassNames } from "../theme";
+import { useEffect } from "react";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -16,6 +17,11 @@ export default function MyApp(props) {
     emotionCache = clientSideEmotionCache,
     pageProps,
   } = props;
+
+  // Expose font CSS variables on <html> so portals (menus, dialogs) inherit them too.
+  useEffect(() => {
+    document.documentElement.classList.add(...fontClassNames.split(" "));
+  }, []);
 
   return (
     <CacheProvider value={emotionCache}>
@@ -42,7 +48,7 @@ export default function MyApp(props) {
         <meta
           key="theme-color"
           name="theme-color"
-          content={theme.palette.primary.main}
+          content={theme.palette.background.default}
         />
         <link
           rel="shortcut icon"
@@ -92,40 +98,6 @@ export default function MyApp(props) {
         <meta name="mobile-web-app-title" content="CSIT 2081" />
         <meta name="mobile-web-app-capable" content="yes" />
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

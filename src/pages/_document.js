@@ -5,13 +5,13 @@ import Document, {
   NextScript,
 } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
-import theme, { nunito } from "../theme";
+import theme, { fontClassNames } from "../theme";
 import createEmotionCache from "../createEmotionCache";
 
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en" className={nunito.className}>
+      <Html lang="en" className={fontClassNames}>
         <Head>
 
           <meta
@@ -34,7 +34,7 @@ export default class MyDocument extends Document {
           <meta
             key="theme-color"
             name="theme-color"
-            content={theme.palette.primary.main}
+            content={theme.palette.background.default}
           />
           <link
             rel="shortcut icon"

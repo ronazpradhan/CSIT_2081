@@ -1,9 +1,7 @@
-import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import ButtonBase from "@mui/material/ButtonBase";
 import { Sem } from "../constants/types";
+
 
 export default function SemesterSelector({
   sem,
@@ -13,73 +11,53 @@ export default function SemesterSelector({
   setSem: (sem: Sem) => void;
 }) {
   return (
-    <Card
+    <Box
+      role="group"
+      aria-labelledby="semester-label"
       sx={{
-        mb: 2,
-        backgroundColor: "transparent",
+        display: "inline-grid",
+        gridTemplateColumns: "repeat(8, minmax(38px, 1fr))",
+        gap: "3px",
+        p: "3px",
+        borderRadius: 999,
+        border: 1,
+        borderColor: "divider",
+        backgroundColor: "background.paper",
+        width: { xs: "100%", sm: "auto" },
       }}
-      elevation={0}
     >
-      <CardContent sx={{ p: 2, pb: "16px !important" }}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Typography
-            variant="h5"
+      {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => {
+        const isSelected = sem === `sem${s}`;
+        return (
+          <ButtonBase
+            key={s}
+            aria-pressed={isSelected}
+            aria-label={`Semester ${s}`}
+            onClick={() => setSem(`sem${s}` as Sem)}
             sx={{
-              color: "#333",
-              mb: 2,
-              transform: "rotate(-2deg)",
+              height: 44,
+              minWidth: { sm: 48 },
+              borderRadius: 999,
+              fontSize: "1.05rem",
+              fontWeight: 700,
+              color: isSelected ? "primary.contrastText" : "text.primary",
+              backgroundColor: isSelected ? "primary.main" : "transparent",
+              transition: "background-color .25s cubic-bezier(.16,1,.3,1), color .25s",
+              "&:hover": {
+                backgroundColor: isSelected ? "primary.main" : "action.hover",
+                color: isSelected ? "primary.contrastText" : "text.primary",
+              },
+              "&.Mui-focusVisible": {
+                outline: 2,
+                outlineColor: "primary.main",
+                outlineOffset: 2,
+              },
             }}
           >
-            Select Semester
-          </Typography>
-          <Box sx={{ width: "100%", maxWidth: "400px" }}>
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
-                gap: { xs: 1, sm: 1.5 },
-                width: "100%",
-                justifyItems: "center",
-              }}
-            >
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => {
-                const isSelected = sem === `sem${s}`;
-                let ordinal = "th";
-                if (s === 1) ordinal = "st";
-                else if (s === 2) ordinal = "nd";
-                else if (s === 3) ordinal = "rd";
-                const label = `${s}${ordinal} Sem`;
-
-                return (
-                  <Button
-                    key={s}
-                    variant={isSelected ? "contained" : "outlined"}
-                    color="primary"
-                    onClick={() => setSem(`sem${s}` as Sem)}
-                    size="small"
-                    sx={{
-                      width: "100%",
-                      minWidth: 0,
-                      p: { xs: 0.5, sm: 1 },
-                      fontSize: { xs: "0.75rem", sm: "0.85rem" },
-                      transform: isSelected ? "translate(-2px, -2px)" : "none",
-                      boxShadow: isSelected ? "5px 5px 0px #333" : "3px 3px 0px #333",
-                    }}
-                  >
-                    {label}
-                  </Button>
-                );
-              })}
-            </Box>
-          </Box>
-        </Box>
-      </CardContent>
-    </Card>
+            {s}
+          </ButtonBase>
+        );
+      })}
+    </Box>
   );
 }
