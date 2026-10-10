@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import CloudOffRoundedIcon from "@mui/icons-material/CloudOffRounded";
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const [online, setOnline] = useState(
@@ -68,7 +69,8 @@ export default function Navbar() {
         <Box sx={{ height: "env(safe-area-inset-top)" }} />
         <Container>
           <Toolbar disableGutters sx={{ minHeight: { xs: 60, sm: 68 }, gap: { xs: 1, sm: 2 } }}>
-            <Box sx={{ display: "flex", alignItems: "baseline", gap: 1.5, flexGrow: 1, minWidth: 0 }}>
+            <Box component="a" href="/" aria-label="CSIT 2081 home" sx={{ display: "flex", alignItems: "center", gap: 1.25, flexGrow: 1, minWidth: 0, color: "inherit", textDecoration: "none" }}>
+              <Logo size={34} />
               <Typography
                 component="p"
                 sx={{ fontSize: { xs: "1.3rem", sm: "1.45rem" }, fontWeight: 800, letterSpacing: "-0.01em", lineHeight: 1 }}

@@ -5,6 +5,7 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
+import Logo from "./Logo";
 
 const INK = "#1a1714";
 const PAPER = "#f6f2ea";
@@ -48,12 +49,15 @@ const Footer = () => {
           }}
         >
           <Box>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+            <Logo size={44} />
             <Typography sx={{ fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.01em", lineHeight: 1 }}>
               CSIT{" "}
               <Box component="span" sx={{ color: "#f07a62" }}>
                 2081
               </Box>
             </Typography>
+            </Box>
             <Typography sx={{ color: MUTED, mt: 1, fontSize: "0.95rem", maxWidth: "38ch" }}>
               Syllabus, exams and front pages for the 2081 BSc. CSIT batch, all in one place.
             </Typography>

@@ -36,6 +36,7 @@ export default class MyDocument extends Document {
             name="theme-color"
             content={theme.palette.background.default}
           />
+          <link rel="icon" type="image/svg+xml" href="/static/favicon/logo.svg" />
           <link
             rel="shortcut icon"
             href="/static/favicon/favicon.ico"
@@ -68,9 +69,9 @@ export default class MyDocument extends Document {
           <link
             rel="mask-icon"
             href="/static/favicon/safari-pinned-tab.svg"
-            color={theme.palette.primary.main}
+            color="#a32a17"
           />
-          <meta name="msapplication-TileColor" content="#fbddeb" />
+          <meta name="msapplication-TileColor" content="#a32a17" />
 
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta
