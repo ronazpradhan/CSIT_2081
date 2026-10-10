@@ -26,17 +26,17 @@ export default function MyApp(props) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title key="title">2081 BSc. CSIT</title>
+        <title key="title">CSIT 2081 · Syllabus, exams and front pages</title>
 
         <meta
           key="og:title"
           property="og:title"
-          content="2081 BSc. CSIT"
+          content="CSIT 2081 · Syllabus, exams and front pages"
         />
         <meta
           key="og:description"
           property="og:description"
-          content="CSIT 2081 is a comprehensive platform offering study materials, classroom routines, exam schedules, front page generator, and more for CSIT students."
+          content="Subjects and syllabus, exam countdowns, and an assignment front page generator for the 2081 BSc. CSIT batch."
         />
         <meta
           key="og:url"
@@ -50,39 +50,39 @@ export default function MyApp(props) {
           name="theme-color"
           content={theme.palette.background.default}
         />
-        <link rel="icon" type="image/svg+xml" href="/static/favicon/logo.svg" />
+        <link rel="icon" type="image/svg+xml" href="/static/favicon/logo.svg?v=2" />
         <link
           rel="shortcut icon"
-          href="/static/favicon/favicon.ico"
+          href="/static/favicon/favicon.ico?v=2"
         />
         <meta name="emotion-insertion-point" content="" />
         <link rel="manifest" href="/manifest.json" />
         <meta
           name="description"
-          content="CSIT 2081 is a comprehensive platform built specifically for our class offering study materials, classroom routines, exam schedules, front page generator, and more."
+          content="Subjects and syllabus, exam countdowns, and an assignment front page generator for the 2081 BSc. CSIT batch."
         />
         <meta property="og:type" content="website" />
         <meta property="fb:app_id" content="1265498347173300" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/static/favicon/apple-touch-icon.png"
+          href="/static/favicon/apple-touch-icon.png?v=2"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/static/favicon/favicon-32x32.png"
+          href="/static/favicon/favicon-32x32.png?v=2"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/static/favicon/favicon-16x16.png"
+          href="/static/favicon/favicon-16x16.png?v=2"
         />
         <link
           rel="mask-icon"
-          href="/static/favicon/safari-pinned-tab.svg"
+          href="/static/favicon/safari-pinned-tab.svg?v=2"
           color="#a32a17"
         />
         <meta name="msapplication-TileColor" content="#a32a17" />

@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 
-// Graduation cap over an assignment page: the coursework that gets the batch to graduation.
+// Graduation cap over a stack of pages: the coursework that gets the batch to graduation.
 export default function Logo({ size = 32 }: { size?: number }) {
   return (
     <Box
@@ -10,12 +10,12 @@ export default function Logo({ size = 32 }: { size?: number }) {
       sx={{ width: size, height: size, flexShrink: 0, display: "block" }}
     >
       <rect width="64" height="64" rx="14" fill="#a32a17" />
-      <path d="M20 30h24v20a2 2 0 0 1-2 2H22a2 2 0 0 1-2-2z" fill="#f6f2ea" />
-      <path d="M25 38h14M25 43.5h9" stroke="#c9bba6" strokeWidth="2.4" strokeLinecap="round" />
-      <path d="M32 11l22 9-22 9-22-9z" fill="#1a1714" />
-      <path d="M21 24.5v5.5c0 2 5 4.5 11 4.5s11-2.5 11-4.5v-5.5L32 29z" fill="#1a1714" />
-      <path d="M50 21.6v9" stroke="#f6c453" strokeWidth="2.4" strokeLinecap="round" />
-      <circle cx="50" cy="32" r="2.6" fill="#f6c453" />
+      <rect x="17" y="40.5" width="30" height="5" rx="2.5" fill="#f6f2ea" opacity=".55" />
+      <rect x="14" y="46.5" width="36" height="5" rx="2.5" fill="#f6f2ea" />
+      <path d="M20.5 27.5v6.2c0 2.6 5.1 5.3 11.5 5.3s11.5-2.7 11.5-5.3v-6.2L32 32.4z" fill="#e2d5c1" />
+      <path d="M32 12.5l23 9.5-23 9.5-23-9.5z" fill="#f6f2ea" />
+      <path d="M51.5 23.4v9.6" stroke="#f6c453" strokeWidth="2.6" strokeLinecap="round" />
+      <circle cx="51.5" cy="34.6" r="2.9" fill="#f6c453" />
     </Box>
   );
 }
