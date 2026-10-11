@@ -569,7 +569,7 @@ export const questionPapers = {
   },
 };
 
-export const currentSem = "sem4";
+export const currentSem = "sem5";
 
 export const classRoutineSem2 = [
   {

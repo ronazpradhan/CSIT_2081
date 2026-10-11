@@ -48,6 +48,12 @@ function Index() {
       }
       return currentSem as Sem;
     }
+    // When the batch moves up a semester, send everyone to the new one once;
+    // after that, their own pick is remembered again.
+    if (localStorage.getItem("semDefault") !== currentSem) {
+      localStorage.setItem("semDefault", currentSem);
+      return currentSem as Sem;
+    }
     return localStorage.getItem("sem")
       ? (`sem${localStorage.getItem("sem")}` as Sem)
       : (currentSem as Sem);
